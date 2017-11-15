@@ -6,10 +6,21 @@ public class Classes : MonoBehaviour {
 
 	public class GameManager{
 		private enum phases{START, UNIT, MOVE, MINIGAME, ACTION, END};
-		private turns{PLAYER1, PLAYER2, PLAYER3, PLAYER4};
+		private enum turns{PLAYER1, PLAYER2, PLAYER3, PLAYER4};
 
 		public phases phase;
 		public turns turn;
+		
+		// <START>
+		// createPlayers()
+		// allocatePlayers()
+		// </START>
+		
+		// <METHODS>
+		// nextTurn()
+		// bindMap()
+		// nextPhase()
+		// </METHODS>
 
 	}
 
@@ -40,7 +51,8 @@ public class Classes : MonoBehaviour {
 	}
 
 	public class Sector: Map{
-		public int id;
+		public readonly int id;
+		public int[] adj;
 
 	}
 

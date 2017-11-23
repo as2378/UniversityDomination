@@ -1,0 +1,8 @@
+/.vs/*
+/Library/metadata/*
+/Temp/*
+/Library/metadata/00*
+/Library/*
+*.meta
+*.csproj
+*.sln

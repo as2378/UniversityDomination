@@ -1,7 +1,6 @@
 /.vs/*
 /Temp/*
 /Library/**
-*.meta
 *.csproj
 *.sln
 /Library/*

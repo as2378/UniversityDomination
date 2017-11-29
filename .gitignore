@@ -1,8 +1,11 @@
 /.vs/*
-/Library/metadata/*
 /Temp/*
-/Library/metadata/00*
-/Library/*
+/Library/**
 *.meta
 *.csproj
 *.sln
+/Library/*
+/Library/*.*
+**.log
+*.userprefs
+ProjectSettings/*.*

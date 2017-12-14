@@ -149,20 +149,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 78266715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93a774dbb1f87640aa7f8c8750b7209, type: 3}
+  m_Script: {fileID: 11500000, guid: f6fe4d8b41ec0b9418be61d4379ca3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ownedSectors: []
   units: []
+  game: {fileID: 369558830}
+  unitPrefab: {fileID: 1741341886544774, guid: 537564a2aeda68d44b8d0a3c53d752e0, type: 2}
   beer: 0
   knowledge: 0
   color: {r: 1, g: 0, b: 0, a: 0}
-  isHuman: 0
-  unitPrefab: {fileID: 1878815207249180, guid: 818cb5a4d63b19b48b6a0ccbcfd1153e, type: 2}
-  unitTransform: {fileID: 4094543943056910, guid: 818cb5a4d63b19b48b6a0ccbcfd1153e,
-    type: 2}
-  game: {fileID: 369558830}
-  isActive: 0
+  human: 0
+  active: 0
 --- !u!1 &86836383 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 661a25b41301114468629a17dee337f6, type: 3}
@@ -175,9 +173,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 86836383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -186,9 +185,7 @@ MonoBehaviour:
   - {fileID: 874683425}
   - {fileID: 1504733619}
   - {fileID: 1764227531}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &86836388 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 661a25b41301114468629a17dee337f6, type: 3}
@@ -205,18 +202,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 91517966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 893385574}
   - {fileID: 1504733619}
   - {fileID: 381651177}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &91517971 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 12e9690c244ed5c48bc84cebbea31f1e, type: 3}
@@ -437,9 +433,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 252651568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -448,9 +445,7 @@ MonoBehaviour:
   - {fileID: 1497788360}
   - {fileID: 874683425}
   - {fileID: 1193213106}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &252651573 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 4f39bc360adbdfa43b43ff57401c746c, type: 3}
@@ -759,9 +754,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 318856578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -771,9 +767,7 @@ MonoBehaviour:
   - {fileID: 381651177}
   - {fileID: 597418672}
   - {fileID: 1698281851}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &318856583 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 90d55c589a7bce345935269d2ea7a2e8, type: 3}
@@ -791,11 +785,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 333708440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1afdf13ef9cdf5b4aaef7a33f18f3ce7, type: 3}
+  m_Script: {fileID: 11500000, guid: 928ed867276256f4391fbf354639e2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 1
   amount: 1
+--- !u!1 &344111258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 344111259}
+  m_Layer: 0
+  m_Name: Units
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344111259
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344111258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.804, y: 0.034, z: 0.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1333998481}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &369558829
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369558831}
   - component: {fileID: 369558830}
+  - component: {fileID: 369558832}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -820,7 +843,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 369558829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be6863e4dfdb48a4f9a72d11750a0acd, type: 3}
+  m_Script: {fileID: 11500000, guid: 968af5b4ed03c8a438128ef25e26c717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   players:
@@ -829,9 +852,10 @@ MonoBehaviour:
   - {fileID: 1384937248}
   - {fileID: 1369005491}
   gameMap: {fileID: 1549731849}
-  currentPlayer: {fileID: 0}
+  currentPlayer: {fileID: 78266717}
   turnState: 0
   gameFinished: 0
+  testMode: 0
 --- !u!4 &369558831
 Transform:
   m_ObjectHideFlags: 0
@@ -849,6 +873,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &369558832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369558829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d59e4b1ed8841f4bac549c4d59b9cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 369558830}
 --- !u!1001 &373963877
 Prefab:
   m_ObjectHideFlags: 0
@@ -961,9 +997,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 381651176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -971,9 +1008,7 @@ MonoBehaviour:
   - {fileID: 1504733619}
   - {fileID: 318856579}
   - {fileID: 597418672}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &381651181 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: a1b77f5dc1afeb341b77513da39e2968, type: 3}
@@ -990,9 +1025,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 404973226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -1000,9 +1036,7 @@ MonoBehaviour:
   - {fileID: 798288505}
   - {fileID: 549129398}
   - {fileID: 1058976151}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &404973231 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 4d48df6783fa0ba4aadb91b29ad05700, type: 3}
@@ -1211,9 +1245,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 549129397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -1222,9 +1257,7 @@ MonoBehaviour:
   - {fileID: 555099662}
   - {fileID: 1310810841}
   - {fileID: 1780098134}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 1
 --- !u!4 &549129402 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: cf2301c1ffa163a4b965fddee37d7b5a, type: 3}
@@ -1241,9 +1274,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 555099661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -1252,9 +1286,7 @@ MonoBehaviour:
   - {fileID: 549129398}
   - {fileID: 1058976151}
   - {fileID: 1193213106}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &555099666 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: e6bfcee1fcb54cc4e9fa1c848ea69a1a, type: 3}
@@ -1271,9 +1303,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 593477886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -1281,9 +1314,7 @@ MonoBehaviour:
   - {fileID: 86836384}
   - {fileID: 1229847032}
   - {fileID: 893385574}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &593477891 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: aa09f7f2214dc9b4c972b79ade499fc3, type: 3}
@@ -1300,18 +1331,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 597418671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 1698281851}
   - {fileID: 318856579}
   - {fileID: 381651177}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 1
 --- !u!4 &597418676 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3d4584bea935c524b8466d3d0c27c4d5, type: 3}
@@ -1328,9 +1358,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 607278872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -1338,9 +1369,7 @@ MonoBehaviour:
   - {fileID: 1598349745}
   - {fileID: 1860884819}
   - {fileID: 1543727952}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &607278877 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0fbd5b2d5d0c29f44889b7af4ff3ace0, type: 3}
@@ -1357,18 +1386,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 702129930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 1780098134}
   - {fileID: 1193213106}
   - {fileID: 1814767436}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &702129935 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f8d517d147eb2bb4c9b6d301350369bd, type: 3}
@@ -1410,20 +1438,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 707397470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93a774dbb1f87640aa7f8c8750b7209, type: 3}
+  m_Script: {fileID: 11500000, guid: f6fe4d8b41ec0b9418be61d4379ca3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ownedSectors: []
   units: []
+  game: {fileID: 369558830}
+  unitPrefab: {fileID: 1741341886544774, guid: 537564a2aeda68d44b8d0a3c53d752e0, type: 2}
   beer: 0
   knowledge: 0
   color: {r: 0.15862082, g: 0, b: 1, a: 0}
-  isHuman: 0
-  unitPrefab: {fileID: 1878815207249180, guid: 818cb5a4d63b19b48b6a0ccbcfd1153e, type: 2}
-  unitTransform: {fileID: 4094543943056910, guid: 818cb5a4d63b19b48b6a0ccbcfd1153e,
-    type: 2}
-  game: {fileID: 369558830}
-  isActive: 0
+  human: 0
+  active: 0
 --- !u!1 &798288503 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: c83ac52af4c3e964597ce64cb231126e, type: 3}
@@ -1440,18 +1466,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 798288503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 549129398}
   - {fileID: 404973227}
   - {fileID: 1543727952}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
+--- !u!1 &847900321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 847900322}
+  m_Layer: 0
+  m_Name: Units
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &847900322
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 847900321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.278, y: 0.04, z: 0.268}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1193213110}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &850195877
 Prefab:
   m_ObjectHideFlags: 0
@@ -1614,9 +1667,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 874683424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -1626,9 +1680,7 @@ MonoBehaviour:
   - {fileID: 1497788360}
   - {fileID: 252651569}
   - {fileID: 1193213106}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &874683429 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2a92ff0cacc83be499fca803a47d68f6, type: 3}
@@ -1645,9 +1697,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 893385573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -1655,9 +1708,7 @@ MonoBehaviour:
   - {fileID: 91517967}
   - {fileID: 1229847032}
   - {fileID: 593477887}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &893385578 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: a744327b9f0b5c245a198aa0c57d8ff7, type: 3}
@@ -1896,6 +1947,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7403bd88dfd9c984c893977d08c53303, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &968766376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 968766377}
+  m_Layer: 0
+  m_Name: Units
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &968766377
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968766376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.355, y: 0.052, z: 0.038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 597418676}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1022555583
 Prefab:
   m_ObjectHideFlags: 0
@@ -1958,9 +2037,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1058976150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -1969,9 +2049,7 @@ MonoBehaviour:
   - {fileID: 1193213106}
   - {fileID: 2035498297}
   - {fileID: 1598349745}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1058976155 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0b47ae70d24d6894f9b5a7436f2f5359, type: 3}
@@ -2038,9 +2116,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1185958551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -2048,9 +2127,7 @@ MonoBehaviour:
   - {fileID: 1860884819}
   - {fileID: 1598349745}
   - {fileID: 404973227}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1185958556 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5d16746f970ae194783448131db84360, type: 3}
@@ -2067,9 +2144,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1193213105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -2080,9 +2158,7 @@ MonoBehaviour:
   - {fileID: 555099662}
   - {fileID: 1058976151}
   - {fileID: 2035498297}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 1
 --- !u!4 &1193213110 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f950503bd84f3ae459fd805222de7f24, type: 3}
@@ -2100,7 +2176,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1225184287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1afdf13ef9cdf5b4aaef7a33f18f3ce7, type: 3}
+  m_Script: {fileID: 11500000, guid: 928ed867276256f4391fbf354639e2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 0
@@ -2117,9 +2193,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1229847031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -2127,9 +2204,7 @@ MonoBehaviour:
   - {fileID: 893385574}
   - {fileID: 86836384}
   - {fileID: 1504733619}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1229847036 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ed50a977ad2d2294394c7e3c3a926355, type: 3}
@@ -2196,18 +2271,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1310810840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 549129398}
   - {fileID: 555099662}
   - {fileID: 1780098134}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1310810845 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 1b1453b12fb6a0149a271eb17b15cfd9, type: 3}
@@ -2274,16 +2348,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1333998476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 1764227531}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 1
 --- !u!4 &1333998481 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: a825fca66cd8c9d4ca84f14a9761b46c, type: 3}
@@ -2325,20 +2398,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369005489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93a774dbb1f87640aa7f8c8750b7209, type: 3}
+  m_Script: {fileID: 11500000, guid: f6fe4d8b41ec0b9418be61d4379ca3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ownedSectors: []
   units: []
+  game: {fileID: 369558830}
+  unitPrefab: {fileID: 1741341886544774, guid: 537564a2aeda68d44b8d0a3c53d752e0, type: 2}
   beer: 0
   knowledge: 0
   color: {r: 1, g: 0.9724138, b: 0, a: 0}
-  isHuman: 0
-  unitPrefab: {fileID: 1878815207249180, guid: 818cb5a4d63b19b48b6a0ccbcfd1153e, type: 2}
-  unitTransform: {fileID: 4094543943056910, guid: 818cb5a4d63b19b48b6a0ccbcfd1153e,
-    type: 2}
-  game: {fileID: 369558830}
-  isActive: 0
+  human: 0
+  active: 0
 --- !u!1 &1384937246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,20 +2447,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1384937246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93a774dbb1f87640aa7f8c8750b7209, type: 3}
+  m_Script: {fileID: 11500000, guid: f6fe4d8b41ec0b9418be61d4379ca3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ownedSectors: []
   units: []
+  game: {fileID: 369558830}
+  unitPrefab: {fileID: 1741341886544774, guid: 537564a2aeda68d44b8d0a3c53d752e0, type: 2}
   beer: 0
   knowledge: 0
   color: {r: 0, g: 1, b: 0.048275948, a: 0}
-  isHuman: 0
-  unitPrefab: {fileID: 1878815207249180, guid: 818cb5a4d63b19b48b6a0ccbcfd1153e, type: 2}
-  unitTransform: {fileID: 4094543943056910, guid: 818cb5a4d63b19b48b6a0ccbcfd1153e,
-    type: 2}
-  game: {fileID: 369558830}
-  isActive: 0
+  human: 0
+  active: 0
 --- !u!1001 &1451317094
 Prefab:
   m_ObjectHideFlags: 0
@@ -2502,17 +2571,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1462279703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 1193213106}
   - {fileID: 1814767436}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1462279708 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c6eb5879a94aa0847b09b48687823c01, type: 3}
@@ -2529,18 +2597,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1497788359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 1504733619}
   - {fileID: 874683425}
   - {fileID: 252651569}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1497788364 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 69ff104d08606ea47afd480069d9869a, type: 3}
@@ -2557,9 +2624,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1504733618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -2572,9 +2640,7 @@ MonoBehaviour:
   - {fileID: 318856579}
   - {fileID: 381651177}
   - {fileID: 91517967}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1504733623 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 209941e65c65fe449987b27ee4d7ab25, type: 3}
@@ -2691,9 +2757,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543727951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -2701,9 +2768,7 @@ MonoBehaviour:
   - {fileID: 1860884819}
   - {fileID: 1185958552}
   - {fileID: 798288505}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1543727956 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5b60bc0ae5ee21d41b3e83a9a30fa003, type: 3}
@@ -2732,10 +2797,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 1549731849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39349adf8a68ab540b495344c5db91c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 316634e5e97243e41a5fa1d6d94941ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 369558830}
+  sectors:
+  - {fileID: 1333998477}
+  - {fileID: 1764227531}
+  - {fileID: 893385574}
+  - {fileID: 593477887}
+  - {fileID: 86836384}
+  - {fileID: 1229847032}
+  - {fileID: 874683425}
+  - {fileID: 1504733619}
+  - {fileID: 91517967}
+  - {fileID: 381651177}
+  - {fileID: 597418672}
+  - {fileID: 1698281851}
+  - {fileID: 318856579}
+  - {fileID: 252651569}
+  - {fileID: 1497788360}
+  - {fileID: 1193213106}
+  - {fileID: 1462279704}
+  - {fileID: 1814767436}
+  - {fileID: 702129931}
+  - {fileID: 1780098134}
+  - {fileID: 549129398}
+  - {fileID: 1310810841}
+  - {fileID: 555099662}
+  - {fileID: 1058976151}
+  - {fileID: 2035498297}
+  - {fileID: 1598349745}
+  - {fileID: 404973227}
+  - {fileID: 1185958552}
+  - {fileID: 1860884819}
+  - {fileID: 607278873}
+  - {fileID: 1543727952}
+  - {fileID: 798288505}
 --- !u!4 &1549731851
 Transform:
   m_ObjectHideFlags: 0
@@ -2794,9 +2892,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1598349744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -2807,9 +2906,7 @@ MonoBehaviour:
   - {fileID: 1698281851}
   - {fileID: 318856579}
   - {fileID: 2035498297}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1598349749 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 28d5d4726246db54ebc6d74d893805cc, type: 3}
@@ -2877,7 +2974,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1619623318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1afdf13ef9cdf5b4aaef7a33f18f3ce7, type: 3}
+  m_Script: {fileID: 11500000, guid: 928ed867276256f4391fbf354639e2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 1
@@ -2898,9 +2995,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1698281850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -2908,9 +3006,7 @@ MonoBehaviour:
   - {fileID: 318856579}
   - {fileID: 597418672}
   - {fileID: 1598349745}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1698281855 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 555cea34fdbb9c04692dd65c25553396, type: 3}
@@ -2928,7 +3024,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1751196667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1afdf13ef9cdf5b4aaef7a33f18f3ce7, type: 3}
+  m_Script: {fileID: 11500000, guid: 928ed867276256f4391fbf354639e2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 0
@@ -2945,9 +3041,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1764227530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -2956,9 +3053,7 @@ MonoBehaviour:
   - {fileID: 86836384}
   - {fileID: 874683425}
   - {fileID: 893385574}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1764227535 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 8939df96045c549479624cfb7c0dca1f, type: 3}
@@ -3025,9 +3120,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1780098133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -3035,9 +3131,7 @@ MonoBehaviour:
   - {fileID: 555099662}
   - {fileID: 549129398}
   - {fileID: 1310810841}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1780098138 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 58c47ea75861a784181571b404d6c9d3, type: 3}
@@ -3104,18 +3198,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1814767435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 702129931}
   - {fileID: 1193213106}
   - {fileID: 1462279704}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1814767440 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2a209d7be0fc78f43812b35c5c1bd9ab, type: 3}
@@ -3132,9 +3225,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1860884818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -3142,9 +3236,7 @@ MonoBehaviour:
   - {fileID: 607278873}
   - {fileID: 1598349745}
   - {fileID: 1185958552}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &1860884823 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 754037520a40c24479f5af62ddd341f1, type: 3}
@@ -3406,9 +3498,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2035498296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21ad1ecd4c86904c9623e2ac3a5996d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dd3e5e284a9cf4a9a1830ada983450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 1549731850}
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
@@ -3418,10 +3511,36 @@ MonoBehaviour:
   - {fileID: 252651569}
   - {fileID: 1193213106}
   - {fileID: 1058976151}
-  id: 0
-  hasLandmark: 0
-  map: {fileID: 1549731850}
+  landmark: 0
 --- !u!4 &2035498301 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ab56facd28bb0d84990ac3d061570f79, type: 3}
   m_PrefabInternal: {fileID: 1769455968}
+--- !u!1 &2079966549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2079966550}
+  m_Layer: 0
+  m_Name: Units
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2079966550
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2079966549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.027, y: 0.039, z: 0.241}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 549129402}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

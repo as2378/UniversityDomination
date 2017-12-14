@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -77,17 +77,15 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
+    m_PVRFiltering: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-    m_PVRFilteringAtrousPositionSigmaIndirect: 2
-    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -109,8 +107,6 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-    debug:
-      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &27172187
 GameObject:
@@ -208,11 +204,11 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
+  - {fileID: 1764227531}
   - {fileID: 593477887}
   - {fileID: 1229847032}
   - {fileID: 874683425}
   - {fileID: 1504733619}
-  - {fileID: 1764227531}
   landmark: 0
 --- !u!4 &86836388 stripped
 Transform:
@@ -580,11 +576,11 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 2035498297}
+  - {fileID: 874683425}
   - {fileID: 1504733619}
   - {fileID: 1497788360}
-  - {fileID: 874683425}
   - {fileID: 1193213106}
+  - {fileID: 2035498297}
   landmark: 0
 --- !u!4 &252651573 stripped
 Transform:
@@ -943,12 +939,12 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 1598349745}
-  - {fileID: 2035498297}
   - {fileID: 1504733619}
   - {fileID: 381651177}
   - {fileID: 597418672}
   - {fileID: 1698281851}
+  - {fileID: 2035498297}
+  - {fileID: 1598349745}
   landmark: 0
 --- !u!4 &318856583 stripped
 Transform:
@@ -1200,10 +1196,10 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 91517967}
   - {fileID: 1504733619}
-  - {fileID: 318856579}
+  - {fileID: 91517967}
   - {fileID: 597418672}
+  - {fileID: 318856579}
   landmark: 0
 --- !u!4 &381651181 stripped
 Transform:
@@ -1298,10 +1294,10 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 1185958552}
-  - {fileID: 798288505}
   - {fileID: 549129398}
   - {fileID: 1058976151}
+  - {fileID: 1185958552}
+  - {fileID: 798288505}
   landmark: 0
 --- !u!4 &404973231 stripped
 Transform:
@@ -1560,11 +1556,11 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 798288505}
-  - {fileID: 404973227}
-  - {fileID: 555099662}
-  - {fileID: 1310810841}
   - {fileID: 1780098134}
+  - {fileID: 1310810841}
+  - {fileID: 555099662}
+  - {fileID: 404973227}
+  - {fileID: 798288505}
   landmark: 1
 --- !u!4 &549129402 stripped
 Transform:
@@ -1603,11 +1599,11 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 1780098134}
-  - {fileID: 1310810841}
-  - {fileID: 549129398}
-  - {fileID: 1058976151}
   - {fileID: 1193213106}
+  - {fileID: 1780098134}
+  - {fileID: 549129398}
+  - {fileID: 1310810841}
+  - {fileID: 1058976151}
   landmark: 0
 --- !u!4 &555099666 stripped
 Transform:
@@ -1647,9 +1643,9 @@ MonoBehaviour:
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 1764227531}
+  - {fileID: 893385574}
   - {fileID: 86836384}
   - {fileID: 1229847032}
-  - {fileID: 893385574}
   landmark: 0
 --- !u!4 &593477891 stripped
 Transform:
@@ -1688,9 +1684,9 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
+  - {fileID: 381651177}
   - {fileID: 1698281851}
   - {fileID: 318856579}
-  - {fileID: 381651177}
   landmark: 1
 --- !u!4 &597418676 stripped
 Transform:
@@ -1827,9 +1823,9 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 1780098134}
   - {fileID: 1193213106}
   - {fileID: 1814767436}
+  - {fileID: 1780098134}
   landmark: 0
 --- !u!4 &702129935 stripped
 Transform:
@@ -2139,8 +2135,8 @@ MonoBehaviour:
   - {fileID: 1764227531}
   - {fileID: 86836384}
   - {fileID: 1504733619}
-  - {fileID: 1497788360}
   - {fileID: 252651569}
+  - {fileID: 1497788360}
   - {fileID: 1193213106}
   landmark: 0
 --- !u!4 &874683429 stripped
@@ -2181,9 +2177,9 @@ MonoBehaviour:
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 1764227531}
-  - {fileID: 91517967}
-  - {fileID: 1229847032}
   - {fileID: 593477887}
+  - {fileID: 1229847032}
+  - {fileID: 91517967}
   landmark: 0
 --- !u!4 &893385578 stripped
 Transform:
@@ -2646,11 +2642,11 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 555099662}
-  - {fileID: 404973227}
   - {fileID: 1193213106}
+  - {fileID: 555099662}
   - {fileID: 2035498297}
   - {fileID: 1598349745}
+  - {fileID: 404973227}
   landmark: 0
 --- !u!4 &1058976155 stripped
 Transform:
@@ -2739,10 +2735,10 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 1543727952}
-  - {fileID: 1860884819}
   - {fileID: 1598349745}
   - {fileID: 404973227}
+  - {fileID: 1860884819}
+  - {fileID: 1543727952}
   landmark: 0
 --- !u!4 &1185958556 stripped
 Transform:
@@ -2781,6 +2777,7 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
+  - {fileID: 874683425}
   - {fileID: 252651569}
   - {fileID: 1462279704}
   - {fileID: 1814767436}
@@ -2872,8 +2869,8 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 593477887}
   - {fileID: 893385574}
+  - {fileID: 593477887}
   - {fileID: 86836384}
   - {fileID: 1504733619}
   landmark: 0
@@ -3048,9 +3045,9 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
+  - {fileID: 1780098134}
   - {fileID: 549129398}
   - {fileID: 555099662}
-  - {fileID: 1780098134}
   landmark: 0
 --- !u!4 &1310810845 stripped
 Transform:
@@ -3444,8 +3441,8 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 1504733619}
   - {fileID: 874683425}
+  - {fileID: 1504733619}
   - {fileID: 252651569}
   landmark: 0
 --- !u!4 &1497788364 stripped
@@ -3485,15 +3482,15 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 1229847032}
   - {fileID: 86836384}
+  - {fileID: 1229847032}
   - {fileID: 874683425}
-  - {fileID: 1497788360}
-  - {fileID: 252651569}
-  - {fileID: 2035498297}
-  - {fileID: 318856579}
-  - {fileID: 381651177}
   - {fileID: 91517967}
+  - {fileID: 381651177}
+  - {fileID: 318856579}
+  - {fileID: 252651569}
+  - {fileID: 1497788360}
+  - {fileID: 2035498297}
   landmark: 0
 --- !u!4 &1504733623 stripped
 Transform:
@@ -3632,9 +3629,9 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 607278873}
-  - {fileID: 1860884819}
   - {fileID: 1185958552}
+  - {fileID: 1860884819}
+  - {fileID: 607278873}
   - {fileID: 798288505}
   landmark: 0
 --- !u!4 &1543727956 stripped
@@ -3809,13 +3806,13 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
+  - {fileID: 1698281851}
+  - {fileID: 318856579}
   - {fileID: 1058976151}
+  - {fileID: 2035498297}
   - {fileID: 1185958552}
   - {fileID: 1860884819}
   - {fileID: 607278873}
-  - {fileID: 1698281851}
-  - {fileID: 318856579}
-  - {fileID: 2035498297}
   landmark: 0
 --- !u!4 &1598349749 stripped
 Transform:
@@ -3982,10 +3979,10 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 607278873}
-  - {fileID: 318856579}
   - {fileID: 597418672}
+  - {fileID: 318856579}
   - {fileID: 1598349745}
+  - {fileID: 607278873}
   landmark: 0
 --- !u!4 &1698281855 stripped
 Transform:
@@ -4099,10 +4096,10 @@ MonoBehaviour:
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 1333998477}
+  - {fileID: 893385574}
   - {fileID: 593477887}
   - {fileID: 86836384}
   - {fileID: 874683425}
-  - {fileID: 893385574}
   landmark: 0
 --- !u!4 &1764227535 stripped
 Transform:
@@ -4192,9 +4189,9 @@ MonoBehaviour:
   owner: {fileID: 0}
   adjacentSectors:
   - {fileID: 702129931}
-  - {fileID: 555099662}
   - {fileID: 549129398}
   - {fileID: 1310810841}
+  - {fileID: 555099662}
   landmark: 0
 --- !u!4 &1780098138 stripped
 Transform:
@@ -4283,9 +4280,9 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 702129931}
   - {fileID: 1193213106}
   - {fileID: 1462279704}
+  - {fileID: 702129931}
   landmark: 0
 --- !u!4 &1814767440 stripped
 Transform:
@@ -4352,10 +4349,10 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 1543727952}
-  - {fileID: 607278873}
   - {fileID: 1598349745}
   - {fileID: 1185958552}
+  - {fileID: 607278873}
+  - {fileID: 1543727952}
   landmark: 0
 --- !u!4 &1860884823 stripped
 Transform:
@@ -4498,6 +4495,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
 --- !u!4 &1926160060
 Transform:
   m_ObjectHideFlags: 0
@@ -4687,6 +4685,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -4723,12 +4735,12 @@ MonoBehaviour:
   unit: {fileID: 0}
   owner: {fileID: 0}
   adjacentSectors:
-  - {fileID: 1598349745}
-  - {fileID: 318856579}
   - {fileID: 1504733619}
+  - {fileID: 318856579}
   - {fileID: 252651569}
   - {fileID: 1193213106}
   - {fileID: 1058976151}
+  - {fileID: 1598349745}
   landmark: 0
 --- !u!4 &2035498301 stripped
 Transform:

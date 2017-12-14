@@ -7,3 +7,4 @@
 ProjectSettings/*.*
 /Library/metadata/**
 /Library/ShaderCache/**
+/Library/EditorInstance.json

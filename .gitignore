@@ -1,10 +1,9 @@
 /.vs/*
 /Temp/*
-/Library/**
 *.csproj
 *.sln
-/Library/*
-/Library/*.*
 **.log
 *.userprefs
 ProjectSettings/*.*
+/Library/metadata/**
+/Library/ShaderCache/**

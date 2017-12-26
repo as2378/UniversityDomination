@@ -1,1 +1,4 @@
 Units spawn at a transform of a static position
+Ambigous attribute name (kinda) | <Landmark> : - amount: int
+Code Consistency | <Player> : Attribute defintions for list based type
+Consider Rename | <Sector> : + IsLandmark(): bool >>> + HasLandmark(): bool

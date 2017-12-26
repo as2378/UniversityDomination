@@ -135,14 +135,12 @@ public class Unit : MonoBehaviour {
 
 
         // realign transforms for each unit
-        this.transform.SetParent(this.sector.transform);
-        this.transform.position = this.sector.transform.position;
-        this.transform.Translate(new Vector3(0, 1, 0));
+		this.transform.SetParent(this.sector.transform.Find("Units").transform);
+		this.transform.position = this.sector.transform.Find("Units").position;
 
-        otherUnit.transform.SetParent(otherUnit.sector.transform);
-        otherUnit.transform.position = otherUnit.sector.transform.position;
-        otherUnit.transform.Translate(new Vector3(0, 1, 0));
-
+		otherUnit.transform.SetParent(otherUnit.sector.transform.Find("Units").transform);
+		otherUnit.transform.position = otherUnit.sector.transform.Find("Units").position;
+        
     }
 
 	public void LevelUp() {

@@ -10,6 +10,12 @@ public class Unit : MonoBehaviour {
     [SerializeField] private Color color;
     [SerializeField] private bool selected = false;
 
+	[SerializeField] private Material level1Material;
+	[SerializeField] private Material level2Material;
+	[SerializeField] private Material level3Material;
+	[SerializeField] private Material level4Material;
+	[SerializeField] private Material level5Material;
+
 
     public Player GetOwner() {
         return owner;
@@ -147,8 +153,36 @@ public class Unit : MonoBehaviour {
 
         // level up the unit, capping at Level 5
 
-        if (level < 5)
-            level++;
+		if (level < 5) {
+
+			// increase level
+			level++;
+
+			// change texture to reflect new level
+			switch (level) 
+			{
+			case 2:
+				this.gameObject.GetComponent<MeshRenderer> ().material = level2Material;
+				break;
+			case 3:
+				this.gameObject.GetComponent<MeshRenderer> ().material = level3Material;
+				break;
+			case 4:
+				this.gameObject.GetComponent<MeshRenderer> ().material = level4Material;
+				break;
+			case 5:
+				this.gameObject.GetComponent<MeshRenderer> ().material = level5Material;
+				break;
+			default:
+				this.gameObject.GetComponent<MeshRenderer> ().material = level1Material;
+				break;
+			}
+
+			// set material color to match owner color
+			GetComponent<Renderer>().material.color = color;
+
+		}
+		
 	}
 
     public void Select() {

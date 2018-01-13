@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 
     [SerializeField] private Game game;
     [SerializeField] private GameObject unitPrefab;
+	[SerializeField] private PlayerUI gui;
     [SerializeField] private int beer = 0;
     [SerializeField] private int knowledge = 0;
     [SerializeField] private Color color;
@@ -27,6 +28,10 @@ public class Player : MonoBehaviour {
     public GameObject GetUnitPrefab() {
         return unitPrefab;
     }
+
+	public PlayerUI GetGui() {
+		return gui;
+	}
 
     public int GetBeer() {
         return beer;

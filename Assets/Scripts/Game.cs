@@ -53,10 +53,12 @@ public class Game : MonoBehaviour {
         }
 
         // give all players a reference to this game
-        foreach (Player player in players)
-        {
-            player.SetGame(this);
-        }
+		// and initialize their GUIs
+		for (int i = 0; i < 4; i++)
+		{
+			players[i].SetGame(this);
+			players[i].GetGui().Initialize(players[i], i + 1);
+		}
 
     }
 
@@ -157,6 +159,7 @@ public class Game : MonoBehaviour {
 
         // deactivate the current player
         currentPlayer.SetActive(false);
+		currentPlayer.GetGui().Deactivate();
 
         // find the index of the current player
         for (int i = 0; i < players.Length; i++)
@@ -171,6 +174,7 @@ public class Game : MonoBehaviour {
                 {
                     currentPlayer = players[0];
                     players[0].SetActive(true);
+					players[0].GetGui().Activate();
                 }
 
                 // otherwise, set the next player as the current player
@@ -178,6 +182,7 @@ public class Game : MonoBehaviour {
                 {
                     currentPlayer = players[nextPlayerIndex];
                     players[nextPlayerIndex].SetActive(true);
+					players[nextPlayerIndex].GetGui().Activate();
                     break;
                 }
             }
@@ -206,6 +211,8 @@ public class Game : MonoBehaviour {
             default:
                 break;
         }
+
+		UpdateGUI();
     }
 
     public void EndTurn() {
@@ -250,6 +257,14 @@ public class Game : MonoBehaviour {
         turnState = TurnState.NULL;
         Debug.Log("GAME FINISHED");
     }
+
+	public void UpdateGUI() {
+
+		// update all players' GUIs
+		for (int i = 0; i < 4; i++) {
+			players [i].GetGui ().UpdateDisplay ();
+		}
+	}
         
     public void Initialize () {
         
@@ -268,7 +283,11 @@ public class Game : MonoBehaviour {
 
         // set Player 1 as the current player
         currentPlayer = players[0];
+		currentPlayer.GetGui().Activate();
         players[0].SetActive(true);
+
+		// update GUIs
+		UpdateGUI();
 
 	}
 

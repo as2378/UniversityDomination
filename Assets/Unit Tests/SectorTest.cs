@@ -5,9 +5,10 @@ using System.Collections;
 
 public class SectorTest 
 {
-    private Game game;
+	private Game game;
+	private Map map;
     private Player[] players;
-    private Map map;
+	private PlayerUI[] gui;
 
     [UnityTest]
     public IEnumerator SetOwner_SectorOwnerAndColorCorrect() {
@@ -53,7 +54,7 @@ public class SectorTest
     }
 
     [UnityTest]
-    public IEnumerator Highlight_SectorColor() {
+    public IEnumerator Highlight_SectorColourCorrect() {
         
         Setup();
 
@@ -353,8 +354,12 @@ public class SectorTest
         // references not in its script is each player's color
         players = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Players")).GetComponentsInChildren<Player>();
 
-        // the "Scenery" asset contains the camera and light source of the 4x4 Test
-        // scenery = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Scenery"));
+		// the "GUI" asset contains the PlayerUI object for each Player
+		gui = MonoBehaviour.Instantiate(Resources.Load<GameObject>("GUI")).GetComponentsInChildren<PlayerUI>();
+
+		// the "Scenery" asset contains the camera and light source of the 4x4 Test
+		// can uncomment to view scene as tests run, but significantly reduces speed
+		//MonoBehaviour.Instantiate(Resources.Load<GameObject>("Scenery"));
 
         // establish references from game to players & map
         game.players = players;
@@ -376,6 +381,14 @@ public class SectorTest
         players[1].SetColor(Color.blue);
         players[2].SetColor(Color.yellow);
         players[3].SetColor(Color.green);
+
+		// establish references to a PlayerUI and Game for each player & initialize GUI
+		for (int i = 0; i < players.Length; i++) 
+		{
+			players[i].SetGui(gui[i]);
+			players[i].SetGame(game);
+			players[i].GetGui().Initialize(players[i], i + 1);
+		}
     }
 
     private void ResetSectors(Sector sectorA, Sector sectorB) {

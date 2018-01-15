@@ -33,6 +33,10 @@ public class Player : MonoBehaviour {
 		return gui;
 	}
 
+	public void SetGui(PlayerUI gui) {
+		this.gui = gui;
+	}
+
     public int GetBeer() {
         return beer;
     }

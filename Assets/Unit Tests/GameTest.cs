@@ -9,6 +9,7 @@ public class GameTest
     private Game game;
     private Map map;
     private Player[] players;
+	private PlayerUI[] gui;
 
 	[UnityTest]
 	public IEnumerator CreatePlayers_TwoPlayersAreHumanAndTwoNot() {
@@ -383,9 +384,13 @@ public class GameTest
         // the "Players" asset contains 4 prefab Player game objects; only
         // references not in its script is each player's color
         players = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Players")).GetComponentsInChildren<Player>();
+		   
+		// the "GUI" asset contains the PlayerUI object for each Player
+		gui = MonoBehaviour.Instantiate(Resources.Load<GameObject>("GUI")).GetComponentsInChildren<PlayerUI>();
 
-        // the "Scenery" asset contains the camera and light source of the 4x4 Test
-        // scenery = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Scenery"));
+		// the "Scenery" asset contains the camera and light source of the 4x4 Test
+		// can uncomment to view scene as tests run, but significantly reduces speed
+		//MonoBehaviour.Instantiate(Resources.Load<GameObject>("Scenery"));
 
         // establish references from game to players & map
         game.players = players;
@@ -400,6 +405,14 @@ public class GameTest
         players[1].SetColor(Color.blue);
         players[2].SetColor(Color.yellow);
         players[3].SetColor(Color.green);
+
+		// establish references to a PlayerUI and Game for each player & initialize GUI
+		for (int i = 0; i < players.Length; i++) 
+		{
+			players[i].SetGui(gui[i]);
+			players[i].SetGame(game);
+			players[i].GetGui().Initialize(players[i], i + 1);
+		}
 
         // enable game's test mode
         game.EnableTestMode();

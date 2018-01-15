@@ -20,28 +20,28 @@ public class PlayerUI : MonoBehaviour {
 	[SerializeField] private int numberOfSectors;
 	private Color defaultHeaderColor = new Color(0.2f, 0.2f, 0.2f, 1.0f);
 
-	public void Initialize (Player player, int player_id) {
+	public void Initialize(Player player, int player_id) {
 
 		this.player = player;
 
-		header = transform.Find ("Header").GetComponent<UnityEngine.UI.Text> ();
-		headerHighlight = transform.Find ("HeaderHighlight").GetComponent<UnityEngine.UI.Text> ();
-		percentOwned = transform.Find ("PercentOwned_Value").GetComponent<UnityEngine.UI.Text> ();
-		beer = transform.Find ("Beer_Value").GetComponent<UnityEngine.UI.Text> ();
-		knowledge = transform.Find ("Knowledge_Value").GetComponent<UnityEngine.UI.Text> ();
-		numberOfSectors = player.GetGame ().gameMap.GetComponent<Map> ().sectors.Length;
+		header = transform.Find("Header").GetComponent<UnityEngine.UI.Text>();
+		headerHighlight = transform.Find("HeaderHighlight").GetComponent<UnityEngine.UI.Text>();
+		percentOwned = transform.Find("PercentOwned_Value").GetComponent<UnityEngine.UI.Text>();
+		beer = transform.Find("Beer_Value").GetComponent<UnityEngine.UI.Text>();
+		knowledge = transform.Find("Knowledge_Value").GetComponent<UnityEngine.UI.Text>();
+		numberOfSectors = player.GetGame().gameMap.GetComponent<Map>().sectors.Length;
 
 		header.text = "Player " + player_id.ToString();
 		headerHighlight.text = header.text;
-		headerHighlight.color = player.GetColor ();
+		headerHighlight.color = player.GetColor();
 	
 	}
 
-	public void UpdateDisplay () {
+	public void UpdateDisplay() {
 
-		percentOwned.text = Mathf.Round(100 * player.ownedSectors.Count / numberOfSectors).ToString () + "%";
-		beer.text = player.GetBeer ().ToString ();
-		knowledge.text = player.GetKnowledge ().ToString ();
+		percentOwned.text = Mathf.Round(100 * player.ownedSectors.Count / numberOfSectors).ToString() + "%";
+		beer.text = player.GetBeer().ToString();
+		knowledge.text = player.GetKnowledge().ToString();
 
 	}
 

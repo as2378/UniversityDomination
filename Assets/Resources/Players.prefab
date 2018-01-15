@@ -177,7 +177,7 @@ MonoBehaviour:
   gui: {fileID: 0}
   beer: 0
   knowledge: 0
-  color: {r: 1, g: 0.9724138, b: 0, a: 1}
+  color: {r: 0, g: 0.8039216, b: 0, a: 1}
   human: 0
   active: 0
 --- !u!114 &114320798990011542
@@ -198,7 +198,7 @@ MonoBehaviour:
   gui: {fileID: 0}
   beer: 0
   knowledge: 0
-  color: {r: 1, g: 0, b: 0, a: 1}
+  color: {r: 0.8039216, g: 0, b: 0, a: 1}
   human: 0
   active: 0
 --- !u!114 &114384537634592538
@@ -219,7 +219,7 @@ MonoBehaviour:
   gui: {fileID: 0}
   beer: 0
   knowledge: 0
-  color: {r: 0.15862082, g: 0, b: 1, a: 1}
+  color: {r: 0, g: 0, b: 0.8039216, a: 1}
   human: 0
   active: 0
 --- !u!114 &114444080772725496
@@ -240,6 +240,6 @@ MonoBehaviour:
   gui: {fileID: 0}
   beer: 0
   knowledge: 0
-  color: {r: 0, g: 1, b: 0.048275948, a: 1}
+  color: {r: 0.8039216, g: 0.8039216, b: 0, a: 1}
   human: 0
   active: 0

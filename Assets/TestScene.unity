@@ -332,7 +332,7 @@ MonoBehaviour:
   gui: {fileID: 1765949842}
   beer: 0
   knowledge: 0
-  color: {r: 1, g: 0, b: 0, a: 1}
+  color: {r: 0.8039216, g: 0, b: 0, a: 1}
   human: 0
   active: 0
 --- !u!1 &86836383 stripped
@@ -2242,7 +2242,7 @@ MonoBehaviour:
   gui: {fileID: 768723275}
   beer: 0
   knowledge: 0
-  color: {r: 0.15862082, g: 0, b: 1, a: 1}
+  color: {r: 0, g: 0, b: 0.8039216, a: 1}
   human: 0
   active: 0
 --- !u!224 &768723274 stripped
@@ -3474,7 +3474,7 @@ MonoBehaviour:
   gui: {fileID: 2036482215}
   beer: 0
   knowledge: 0
-  color: {r: 1, g: 0.9724138, b: 0, a: 1}
+  color: {r: 0, g: 0.8039216, b: 0, a: 1}
   human: 0
   active: 0
 --- !u!1 &1384937246
@@ -3524,7 +3524,7 @@ MonoBehaviour:
   gui: {fileID: 916870575}
   beer: 0
   knowledge: 0
-  color: {r: 0, g: 1, b: 0.048275948, a: 1}
+  color: {r: 0.8039216, g: 0.8039216, b: 0, a: 1}
   human: 0
   active: 0
 --- !u!1001 &1423455788

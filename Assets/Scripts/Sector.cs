@@ -8,7 +8,7 @@ public class Sector : MonoBehaviour {
     [SerializeField] private Unit unit;
     [SerializeField] private Player owner;
     [SerializeField] private Sector[] adjacentSectors;
-    [SerializeField] private bool landmark;
+	[SerializeField] private Landmark landmark;
 
 
     public Map GetMap() {
@@ -53,17 +53,17 @@ public class Sector : MonoBehaviour {
         return adjacentSectors;
     }
 
-    public bool IsLandmark() {
+	public Landmark GetLandmark() {
         return landmark;
     }
 
-    public void SetLandmark(bool landmark) {
+	public void SetLandmark(Landmark landmark) {
         this.landmark = landmark;
     }
         
 	
 
-	public void Initialize () {
+	public void Initialize() {
 
         // initialize the sector by setting its owner and unit to null
         // and determining if it contains a landmark or not
@@ -75,11 +75,9 @@ public class Sector : MonoBehaviour {
 		// clear unit
 		unit = null;
 
-        // determine if landmarked
-        if (gameObject.GetComponentInChildren<Landmark>() != null)
-            landmark = true;
-        else
-            landmark = false;
+		// get landmark (if any)
+		landmark = gameObject.GetComponentInChildren<Landmark>();
+
 	}
 
     public void ApplyHighlight(float amount) {
@@ -138,55 +136,13 @@ public class Sector : MonoBehaviour {
         // when this sector is clicked, determine the context
         // and act accordingly
 
+		OnMouseUpAsButtonAccessible();
 
-        // if this sector contains a unit and belongs to the
-        // current active player, and if no unit is selected
-        if (unit != null && owner.IsActive() && map.game.NoUnitSelected())
-        {
-            // select this sector's unit
-            unit.Select();
-        }
-
-        // if this sector's unit is already selected
-        else if (unit != null && unit.IsSelected())
-        {
-            // deselect this sector's unit           
-            unit.Deselect();
-        }
-
-        // if this sector is adjacent to the sector containing
-        // the selected unit
-        else if (AdjacentSelectedUnit() != null)
-        {
-            // get the selected unit
-            Unit selectedUnit = AdjacentSelectedUnit();
-
-            // deselect the selected unit
-            selectedUnit.Deselect();
-
-            // if this sector is unoccupied
-            if (unit == null)
-            {
-                MoveIntoUnoccupiedSector(selectedUnit);
-            }
-
-            // if the sector is occupied by a friendly unit
-            else if (unit.GetOwner() == selectedUnit.GetOwner())
-            {
-                MoveIntoFriendlyUnit(selectedUnit);
-            }
-
-            // if the sector is occupied by a hostile unit
-            else if (unit.GetOwner() != selectedUnit.GetOwner())
-            {
-                MoveIntoHostileUnit(selectedUnit, this.unit);
-            }
-        }
     }
 
     public void OnMouseUpAsButtonAccessible() {
 
-        // a copy of OnMouseUpAsButton that is 
+        // a method of OnMouseUpAsButton that is 
         // accessible to other objects for testing
 
 

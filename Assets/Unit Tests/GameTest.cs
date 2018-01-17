@@ -98,7 +98,7 @@ public class GameTest
         foreach (Player player in players)
         {
             Assert.IsTrue(player.ownedSectors.Count == 1);
-            Assert.IsTrue(player.ownedSectors[0].IsLandmark());
+            Assert.IsNotNull(player.ownedSectors[0].GetLandmark());
             Assert.IsTrue(player.units.Count == 1);
 
             Assert.AreSame(player.ownedSectors[0], player.units[0].GetSector());
@@ -250,37 +250,22 @@ public class GameTest
 
         yield return null;
     }
-
-    // NEED TO MERGE THE NEXT TWO TESTS INTO ONE - WINNER SHOULD ONLY BE
-    // FOUND IF ONLY ONE PLAYER HAS LANDMARKS && NO OTHER PLAYERS HAVE
-    // UNITS - SHOULD NOT FIND WINNER IN ANY OTHER CASE (?)
-
+        
     [UnityTest]
-    public IEnumerator GetWinner_OnePlayerWithLandmarksWins() {
+    public IEnumerator GetWinner_OnePlayerWithLandmarksAndUnitsWins() {
         
         Setup();
 
         Sector landmark1 = map.sectors[1];
         Player playerA = players[0];
-        landmark1.SetLandmark(true);
+
+        // ensure 'landmark1' is a landmark
+        landmark1.Initialize();
+        Assert.IsNotNull(landmark1.GetLandmark());
 
         // ensure winner is found if only 1 player owns a landmark
         ClearSectorsAndUnitsOfAllPlayers();
         playerA.ownedSectors.Add(landmark1);
-        Assert.IsNotNull(game.GetWinner());
-
-        yield return null;
-    }
-
-    [UnityTest]
-    public IEnumerator GetWinner_OnePlayerWithUnitsWins() {
-        
-        Setup();
-
-        Player playerA = players[0];
-
-        // ensure winner is found if only 1 player has a unit
-        ClearSectorsAndUnitsOfAllPlayers();
         playerA.units.Add(MonoBehaviour.Instantiate(playerA.GetUnitPrefab()).GetComponent<Unit>());
         Assert.IsNotNull(game.GetWinner());
 
@@ -296,8 +281,12 @@ public class GameTest
         Sector landmark2 = map.sectors[7];
         Player playerA = players[0];
         Player playerB = players[1];
-        landmark1.SetLandmark(true);
-        landmark2.SetLandmark(true);
+
+        // ensure'landmark1' and 'landmark2' are landmarks
+        landmark1.Initialize();
+        landmark2.Initialize();
+        Assert.IsNotNull(landmark1.GetLandmark());
+        Assert.IsNotNull(landmark2.GetLandmark());
 
         // ensure no winner is found if >1 players own a landmark
         ClearSectorsAndUnitsOfAllPlayers();
@@ -333,7 +322,10 @@ public class GameTest
         Sector landmark1 = map.sectors[1];
         Player playerA = players[0];
         Player playerB = players[1];
-        landmark1.SetLandmark(true);
+
+        // ensure 'landmark1' is a landmark
+        landmark1.Initialize();
+        Assert.IsNotNull(landmark1.GetLandmark());
 
         // ensure no winner is found if 1 player has a landmark
         // and another player has a unit

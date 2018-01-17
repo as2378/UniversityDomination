@@ -42,13 +42,13 @@ public class SectorTest
         Assert.IsNull(sectorWithoutLandmark.GetOwner());
         Assert.IsTrue(sectorWithoutLandmark.gameObject.GetComponent<Renderer>().material.color.Equals(Color.gray));
         Assert.IsNull(sectorWithoutLandmark.GetUnit());
-        Assert.IsFalse(sectorWithoutLandmark.IsLandmark());
+        Assert.IsNull(sectorWithoutLandmark.GetLandmark());
 
         sectorWithLandmark.Initialize();
         Assert.IsNull(sectorWithLandmark.GetOwner());
         Assert.IsTrue(sectorWithLandmark.gameObject.GetComponent<Renderer>().material.color.Equals(Color.gray));
         Assert.IsNull(sectorWithLandmark.GetUnit());
-        Assert.IsTrue(sectorWithLandmark.IsLandmark());
+        Assert.IsNotNull(sectorWithLandmark.GetLandmark());
 
         yield return null;
     }

@@ -99,9 +99,9 @@ public class Player : MonoBehaviour {
         sector.SetOwner(this);
 
         // if the sector contains a landmark
-        if (sector.IsLandmark())
+        if (sector.GetLandmark() != null)
         {
-            Landmark landmark = sector.GetComponentInChildren<Landmark>();
+            Landmark landmark = sector.GetLandmark();
 
             // remove the landmark's resource bonus from the previous
             // owner and add it to this player
@@ -129,7 +129,7 @@ public class Player : MonoBehaviour {
 		foreach (Sector sector in ownedSectors) 
 		{
             // if the sector contains a landmark and is unoccupied
-            if (sector.IsLandmark() && sector.GetUnit() == null)
+            if (sector.GetLandmark() != null && sector.GetUnit() == null)
             {
                 // instantiate a new unit at the sector
                 Unit newUnit = Instantiate(unitPrefab).GetComponent<Unit>();
@@ -167,7 +167,7 @@ public class Player : MonoBehaviour {
         foreach (Sector sector in ownedSectors)
         {
             // if a landmarked sector is found, return true
-            if (sector.IsLandmark())
+            if (sector.GetLandmark() != null)
                 return true;
         }
 

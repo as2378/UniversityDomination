@@ -43,25 +43,30 @@ public class PlayerTest
 
         // capturing landmark
         Sector landmarkedSector = map.sectors[1]; 
-        Landmark landmark = landmarkedSector.GetComponentInChildren<Landmark>();
+        landmarkedSector.Initialize();
+        Landmark landmark = landmarkedSector.GetLandmark();
         Player playerA = game.players[0];
         Player playerB = game.players[1];
-        landmarkedSector.SetLandmark(true); // sector 1 is a landmark
-        landmark.SetResourceType(Landmark.ResourceType.Beer); // landmark is type beer
-        int attackerBeerBeforeCapture = playerA.GetBeer();
-
         playerB.Capture(landmarkedSector);
-        int defenderBeerBeforeCapture = landmarkedSector.GetOwner().GetBeer();
+
+        // ensure 'landmarkedSector' is a landmark of type Beer
+        Assert.IsNotNull(landmarkedSector.GetLandmark());
+        landmark.SetResourceType(Landmark.ResourceType.Beer);
+
+        // get beer amounts for each player before capture
+        int attackerBeerBeforeCapture = playerA.GetBeer();
+        int defenderBeerBeforeCapture = playerB.GetBeer();
         Player previousOwner = landmarkedSector.GetOwner();
 
         playerA.Capture(landmarkedSector);
-        Assert.IsTrue(landmarkedSector.IsLandmark()); // just double checking sector is landmark 
-        Assert.AreSame(landmarkedSector.GetOwner(), playerA); // owner stored in sector
-        Assert.IsTrue(playerA.ownedSectors.Contains(landmarkedSector)); // sector is stored as owned by the player
-        // increase in correct resource
 
-        Assert.IsTrue(attackerBeerBeforeCapture + landmark.GetAmount() == playerA.GetBeer()); // attacker has gained the correct bonus
-        Assert.IsTrue(defenderBeerBeforeCapture - landmark.GetAmount() == previousOwner.GetBeer()); // defender has lost the correct bonus
+        // ensure sector is captured correctly
+        Assert.AreSame(landmarkedSector.GetOwner(), playerA);
+        Assert.IsTrue(playerA.ownedSectors.Contains(landmarkedSector));
+
+        // ensure resources are transferred correctly
+        Assert.IsTrue(attackerBeerBeforeCapture + landmark.GetAmount() == playerA.GetBeer());
+        Assert.IsTrue(defenderBeerBeforeCapture - landmark.GetAmount() == previousOwner.GetBeer());
 
         yield return null;
     }
@@ -73,25 +78,30 @@ public class PlayerTest
 
         // capturing landmark
         Sector landmarkedSector = map.sectors[1]; 
-        Landmark landmark = landmarkedSector.GetComponentInChildren<Landmark>();
+        landmarkedSector.Initialize();
+        Landmark landmark = landmarkedSector.GetLandmark();
         Player playerA = game.players[0];
         Player playerB = game.players[1];
-        landmarkedSector.SetLandmark(true); // sector 1 is a landmark
-        landmark.SetResourceType(Landmark.ResourceType.Knowledge); // landmark is type knowledge
-        int attackerKnowledgeBeforeCapture = playerA.GetKnowledge();
-
         playerB.Capture(landmarkedSector);
-        int defenderKnowledgeBeforeCapture = landmarkedSector.GetOwner().GetKnowledge();
+
+        // ensure 'landmarkedSector' is a landmark of type Knowledge
+        Assert.IsNotNull(landmarkedSector.GetLandmark());
+        landmark.SetResourceType(Landmark.ResourceType.Knowledge);
+
+        // get knowledge amounts for each player before capture
+        int attackerKnowledgeBeforeCapture = playerA.GetKnowledge();
+        int defenderKnowledgeBeforeCapture = playerB.GetKnowledge();
         Player previousOwner = landmarkedSector.GetOwner();
 
         playerA.Capture(landmarkedSector);
-        Assert.IsTrue(landmarkedSector.IsLandmark()); // just double checking sector is landmark 
-        Assert.AreSame(landmarkedSector.GetOwner(), playerA); // owner stored in sector
-        Assert.IsTrue(playerA.ownedSectors.Contains(landmarkedSector)); // sector is stored as owned by the player
-        // increase in correct resource
 
-        Assert.IsTrue(attackerKnowledgeBeforeCapture + landmark.GetAmount() == playerA.GetKnowledge()); // attacker has gained the correct bonus
-        Assert.IsTrue(defenderKnowledgeBeforeCapture - landmark.GetAmount() == previousOwner.GetKnowledge()); // defender has lost the correct bonus
+        // ensure sector is captured correctly
+        Assert.AreSame(landmarkedSector.GetOwner(), playerA);
+        Assert.IsTrue(playerA.ownedSectors.Contains(landmarkedSector));
+
+        // ensure resources are transferred correctly
+        Assert.IsTrue(attackerKnowledgeBeforeCapture + landmark.GetAmount() == playerA.GetKnowledge());
+        Assert.IsTrue(defenderKnowledgeBeforeCapture - landmark.GetAmount() == previousOwner.GetKnowledge());
 
         yield return null;
     }
@@ -103,18 +113,25 @@ public class PlayerTest
 
         // capturing landmark
         Sector landmarkedSector = map.sectors[1]; 
-        Landmark landmark = landmarkedSector.GetComponentInChildren<Landmark>();
+        landmarkedSector.Initialize();
+        Landmark landmark = landmarkedSector.GetLandmark();
         Player playerA = game.players[0];
-        landmarkedSector.SetLandmark(true); // sector 1 is a landmark
-        landmark.SetResourceType(Landmark.ResourceType.Beer); // landmark is type beer
+
+        // ensure 'landmarkedSector' is a landmark of type Beer
+        Assert.IsNotNull(landmarkedSector.GetLandmark());
+        landmark.SetResourceType(Landmark.ResourceType.Beer);
+
+        // get player beer amount before capture
         int oldBeer = playerA.GetBeer();
 
         playerA.Capture(landmarkedSector);
-        Assert.IsTrue(landmarkedSector.IsLandmark()); // just double checking sector is landmark 
-        Assert.AreSame(landmarkedSector.GetOwner(), playerA); // owner stored in sector
-        Assert.IsTrue(playerA.ownedSectors.Contains(landmarkedSector)); // sector is stored as owned by the player
-        // increase in correct resource
-        Assert.IsTrue(playerA.GetBeer() - oldBeer == landmark.GetAmount()); // attacker has gained the correct bonus
+
+        // ensure sector is captured correctly
+        Assert.AreSame(landmarkedSector.GetOwner(), playerA);
+        Assert.IsTrue(playerA.ownedSectors.Contains(landmarkedSector));
+
+        // ensure resources are gained correctly
+        Assert.IsTrue(playerA.GetBeer() - oldBeer == landmark.GetAmount());
         
         yield return null;
     }
@@ -126,44 +143,95 @@ public class PlayerTest
 
         // capturing landmark
         Sector landmarkedSector = map.sectors[1]; 
-        Landmark landmark = landmarkedSector.GetComponentInChildren<Landmark>();
+        landmarkedSector.Initialize();
+        Landmark landmark = landmarkedSector.GetLandmark();
         Player playerA = game.players[0];
-        landmarkedSector.SetLandmark(true); // sector 1 is a landmark
-        landmark.SetResourceType(Landmark.ResourceType.Knowledge); // landmark is type knowledge
+
+        // ensure 'landmarkedSector' is a landmark of type Knowledge
+        Assert.IsNotNull(landmarkedSector.GetLandmark());
+        landmark.SetResourceType(Landmark.ResourceType.Knowledge);
+
+        // get player knowledge amount before capture
         int oldKnowledge = playerA.GetKnowledge();
 
         playerA.Capture(landmarkedSector);
-        Assert.IsTrue(landmarkedSector.IsLandmark()); // just double checking sector is landmark 
-        Assert.AreSame(landmarkedSector.GetOwner(), playerA); // owner stored in sector
-        Assert.IsTrue(playerA.ownedSectors.Contains(landmarkedSector)); // sector is stored as owned by the player
-        Assert.IsTrue(playerA.GetKnowledge() - oldKnowledge == landmark.GetAmount()); // attacker has gained the correct bonus
+
+        // ensure sector is captured correctly
+        Assert.AreSame(landmarkedSector.GetOwner(), playerA);
+        Assert.IsTrue(playerA.ownedSectors.Contains(landmarkedSector));
+
+        // ensure resources are gained correctly
+        Assert.IsTrue(playerA.GetKnowledge() - oldKnowledge == landmark.GetAmount());
 
         yield return null;
     }
 
     [UnityTest]
-    public IEnumerator SpawnUnits_SpawnedWhenLandmarkOwned() {
+    public IEnumerator SpawnUnits_SpawnedWhenLandmarkOwnedAndUnoccupied() {
         
         Setup();
 
         Sector landmarkedSector = map.sectors[1]; 
-        Sector nonLandmarkSector = map.sectors[0]; // sector 0 is not a landmark
         Player playerA = game.players[0];
-        landmarkedSector.SetLandmark(true); // sector 1 is a landmark
-        landmarkedSector.SetUnit(null);
 
-        Assert.IsEmpty(playerA.units);
-        playerA.Capture(nonLandmarkSector);
-        playerA.SpawnUnits();
-        Assert.IsEmpty(playerA.units); // no unit spawned because playerA has no landmarks
+        // ensure that 'landmarkedSector' is a landmark and does not contain a unit
+        landmarkedSector.Initialize();
+        landmarkedSector.SetUnit(null);
+        Assert.IsNotNull(landmarkedSector.GetLandmark());
 
         playerA.Capture(landmarkedSector);
         playerA.SpawnUnits();
-        Assert.IsTrue(playerA.units.Contains(landmarkedSector.GetUnit())); // unit now spawned because playerA has a landmark
 
+        // ensure a unit has been spawned for playerA in landmarkedSector
+        Assert.IsTrue(playerA.units.Contains(landmarkedSector.GetUnit()));
+
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator SpawnUnits_NotSpawnedWhenLandmarkOwnedAndOccupied() {
+
+        Setup();
+
+        Sector landmarkedSector = map.sectors[1]; 
+        Player playerA = game.players[0];
+
+        // ensure that 'landmarkedSector' is a landmark and contains a Level 5 unit
+        landmarkedSector.Initialize();
+        landmarkedSector.SetUnit(MonoBehaviour.Instantiate(playerA.GetUnitPrefab()).GetComponent<Unit>());
         landmarkedSector.GetUnit().SetLevel(5);
+        landmarkedSector.GetUnit().SetOwner(playerA);
+        Assert.IsNotNull(landmarkedSector.GetLandmark());
+
+        playerA.Capture(landmarkedSector);
         playerA.SpawnUnits();
-        Assert.IsTrue(landmarkedSector.GetUnit().GetLevel() == 5); // unit on landmark is not replaced when SpawnUnits called, i.e. no new unit spawned
+
+        // ensure a Level 1 unit has not spawned over the Level 5 unit already in landmarkedSector
+        Assert.IsTrue(landmarkedSector.GetUnit().GetLevel() == 5);
+
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator SpawnUnits_NotSpawnedWhenLandmarkNotOwned() {
+
+        Setup();
+
+        Sector landmarkedSector = map.sectors[1]; 
+        Player playerA = game.players[0];
+        Player playerB = game.players[1];
+        landmarkedSector.SetUnit(null);
+
+        // ensure that 'landmarkedSector' is a landmark and does not contain a unit
+        landmarkedSector.Initialize();
+        landmarkedSector.SetUnit(null);
+        Assert.IsNotNull(landmarkedSector.GetLandmark());
+
+        playerB.Capture(landmarkedSector);
+        playerA.SpawnUnits();
+
+        // ensure no unit is spawned at landmarkedSector
+        Assert.IsNull(landmarkedSector.GetUnit());
 
         yield return null;
     }
@@ -187,10 +255,9 @@ public class PlayerTest
         // player[0] needs to lose their landmark
         for (int i = 0; i < playerA.ownedSectors.Count; i++)
         {
-            if (playerA.ownedSectors[i].IsLandmark() == true)
+            if (playerA.ownedSectors[i].GetLandmark() != null)
             {
-                //game.players[0].ownedSectors[i].SetOwner(game.players[1]);
-                playerA.ownedSectors[i].SetLandmark(false); // player[0] no longer has landmarks
+                playerA.ownedSectors[i].SetLandmark(null); // player[0] no longer has landmarks
             }
         }
         Assert.IsTrue(playerA.IsEliminated());

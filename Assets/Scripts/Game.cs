@@ -122,7 +122,7 @@ public class Game : MonoBehaviour {
         List<Sector> landmarkedSectors = new List<Sector>();
         foreach (Sector sector in sectors)
         {
-            if (sector.IsLandmark())
+            if (sector.GetLandmark() != null)
             {
                 landmarkedSectors.Add(sector);
             }

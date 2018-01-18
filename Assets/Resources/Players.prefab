@@ -173,7 +173,7 @@ MonoBehaviour:
   ownedSectors: []
   units: []
   game: {fileID: 0}
-  unitPrefab: {fileID: 1005237642776706, guid: 4953f91229335ab4285abb2ab4711a4d, type: 2}
+  unitPrefab: {fileID: 1005237642776706, guid: 773e4d707cb8962478065cd369102b78, type: 2}
   gui: {fileID: 0}
   beer: 0
   knowledge: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   ownedSectors: []
   units: []
   game: {fileID: 0}
-  unitPrefab: {fileID: 1005237642776706, guid: 4953f91229335ab4285abb2ab4711a4d, type: 2}
+  unitPrefab: {fileID: 1005237642776706, guid: 773e4d707cb8962478065cd369102b78, type: 2}
   gui: {fileID: 0}
   beer: 0
   knowledge: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   ownedSectors: []
   units: []
   game: {fileID: 0}
-  unitPrefab: {fileID: 1005237642776706, guid: 4953f91229335ab4285abb2ab4711a4d, type: 2}
+  unitPrefab: {fileID: 1005237642776706, guid: 773e4d707cb8962478065cd369102b78, type: 2}
   gui: {fileID: 0}
   beer: 0
   knowledge: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   ownedSectors: []
   units: []
   game: {fileID: 0}
-  unitPrefab: {fileID: 1005237642776706, guid: 4953f91229335ab4285abb2ab4711a4d, type: 2}
+  unitPrefab: {fileID: 1005237642776706, guid: 773e4d707cb8962478065cd369102b78, type: 2}
   gui: {fileID: 0}
   beer: 0
   knowledge: 0

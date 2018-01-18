@@ -68,7 +68,7 @@ public class Unit : MonoBehaviour {
         // set the owner, level, and color of the unit
         owner = player;
         level = 1;
-        color = owner.GetColor();
+        color = Color.white;
 
         // set the material color to the player color
         GetComponent<Renderer>().material.color = color;

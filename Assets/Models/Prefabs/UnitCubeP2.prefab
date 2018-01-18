@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23156865196842426}
   - component: {fileID: 114082502706938668}
   m_Layer: 2
-  m_Name: UnitCube
+  m_Name: UnitCubeP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,11 +52,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b4f8e69023bb505418b1926a1348170f, type: 2}
+  - {fileID: 2100000, guid: d9cc3f3a228795a49a6482339d5bf5e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67,6 +68,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -110,8 +112,8 @@ MonoBehaviour:
   level: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   selected: 0
-  level1Material: {fileID: 2100000, guid: b4f8e69023bb505418b1926a1348170f, type: 2}
-  level2Material: {fileID: 2100000, guid: 3f6631af913373546bcef27b0c92b9a1, type: 2}
-  level3Material: {fileID: 2100000, guid: 4d31fd3ec9caa5b4e86440f66c8075f8, type: 2}
-  level4Material: {fileID: 2100000, guid: c02e95c0f38911a4087d00286a9e7677, type: 2}
-  level5Material: {fileID: 2100000, guid: b38b8448320a2aa46a1b16ec9b19c9ca, type: 2}
+  level1Material: {fileID: 2100000, guid: d9cc3f3a228795a49a6482339d5bf5e7, type: 2}
+  level2Material: {fileID: 2100000, guid: 8cc35ca80efcb214180a9dc409455c8a, type: 2}
+  level3Material: {fileID: 2100000, guid: ea6e1d5b8f2e41741bd35cb3ac869f54, type: 2}
+  level4Material: {fileID: 2100000, guid: a4acd83a95635f143aecb8d33b5c5395, type: 2}
+  level5Material: {fileID: 2100000, guid: 1e89be52c34c5b744a26a8b493dfdcda, type: 2}

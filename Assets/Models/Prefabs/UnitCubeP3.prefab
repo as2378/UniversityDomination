@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 54486e9edf4f5ee42906b1d0787b60f7, type: 2}
+  - {fileID: 2100000, guid: b4f8e69023bb505418b1926a1348170f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,8 +112,8 @@ MonoBehaviour:
   level: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   selected: 0
-  level1Material: {fileID: 2100000, guid: 54486e9edf4f5ee42906b1d0787b60f7, type: 2}
-  level2Material: {fileID: 2100000, guid: 3ab160a932bbc8245938f4be92c34b6f, type: 2}
-  level3Material: {fileID: 2100000, guid: f45542e337f40d24f85bc7204d7c14b7, type: 2}
-  level4Material: {fileID: 2100000, guid: f9b557a45251761428387238c933aae4, type: 2}
-  level5Material: {fileID: 2100000, guid: ae6579d361e9e7940a7fe53244f01c64, type: 2}
+  level1Material: {fileID: 2100000, guid: b4f8e69023bb505418b1926a1348170f, type: 2}
+  level2Material: {fileID: 2100000, guid: 3f6631af913373546bcef27b0c92b9a1, type: 2}
+  level3Material: {fileID: 2100000, guid: 4d31fd3ec9caa5b4e86440f66c8075f8, type: 2}
+  level4Material: {fileID: 2100000, guid: c02e95c0f38911a4087d00286a9e7677, type: 2}
+  level5Material: {fileID: 2100000, guid: b38b8448320a2aa46a1b16ec9b19c9ca, type: 2}

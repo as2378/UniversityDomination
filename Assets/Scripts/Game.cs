@@ -8,11 +8,16 @@ public class Game : MonoBehaviour {
 	public GameObject gameMap;
     public Player currentPlayer;
 
+    //This is used for delaying the PVC's spawn
+    private int numberOfTurns = 1;
+
+    private bool PVCExists = false;
+
     public enum TurnState { Move1, Move2, EndOfTurn, NULL };
     [SerializeField] private TurnState turnState;
     [SerializeField] private bool gameFinished = false;
     [SerializeField] private bool testMode = false;
-
+    [SerializeField] private int delayPVCBy = 10; // turns
 
     public TurnState GetTurnState() {
         return turnState;
@@ -113,6 +118,15 @@ public class Game : MonoBehaviour {
             player.SpawnUnits();
         }
 
+        // Ensure there is at most 1 PVC on the map
+        int numberOfPVC = CountPVC();
+
+        if(numberOfPVC == 1) {
+            PVCExists = true;
+        }
+        else if(numberOfPVC > 1) {
+            throw new System.Exception("There can be at most 1 PVC on the map at any time.");
+        }
 	}
 
     private Sector[] GetLandmarkedSectors(Sector[] sectors) {
@@ -187,6 +201,52 @@ public class Game : MonoBehaviour {
                 }
             }
         }
+
+        numberOfTurns += 1;
+        SpawnPVC();
+    }
+
+    /*
+     * This method is called every time NextPlayer() is invoked.
+     * 
+     * The method will spawn the PVC randomly on the map if
+     * numberOfTurns == delayPVCBy
+     * */
+    private void SpawnPVC() {
+        if(PVCExists) {
+            return;
+        }
+
+        if(numberOfTurns == delayPVCBy) {
+            Sector[] sectors = gameMap.GetComponentsInChildren<Sector>();
+            bool spawned = false;
+
+            while(!spawned) {
+                int randomIndex = Random.Range(0, sectors.Length);
+                Sector sector = sectors[randomIndex];
+
+                if(sector.GetLandmark() == null && sector.GetOwner() == null) {
+                    sector.SpawnPVC();
+                    spawned = true;
+                }
+            }            
+        }
+    }
+
+    /*
+     * CountPVC() will return the number of PVCs on the map
+     * */
+    private int CountPVC() {
+        Sector[] sectors = gameMap.GetComponentsInChildren<Sector>();
+        int counter = 0;
+
+        foreach(Sector sector in sectors) {
+            if(sector.GetPVC()) {
+                counter++;
+            }
+        }
+
+        return counter;
     }
        
     public void NextTurnState() {

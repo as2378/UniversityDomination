@@ -9,6 +9,7 @@ public class Sector : MonoBehaviour {
     [SerializeField] private Player owner;
     [SerializeField] private Sector[] adjacentSectors;
 	[SerializeField] private Landmark landmark;
+    [SerializeField] private bool PVC = false;
 
 
     public Map GetMap() {
@@ -59,6 +60,14 @@ public class Sector : MonoBehaviour {
 
 	public void SetLandmark(Landmark landmark) {
         this.landmark = landmark;
+    }
+
+    public void SpawnPVC() {
+        this.PVC = true;
+    }
+
+    public bool GetPVC() {
+        return PVC;
     }
         
 	

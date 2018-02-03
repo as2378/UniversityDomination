@@ -58,6 +58,17 @@ MonoBehaviour:
   - {fileID: 0}
   gameMap: {fileID: 0}
   currentPlayer: {fileID: 0}
+  playerColours:
+  - {r: 0.8, g: 0, b: 0, a: 1}
+  - {r: 0.7, g: 0, b: 0.95, a: 1}
+  - {r: 0.8, g: 0.8, b: 0, a: 1}
+  - {r: 0, g: 0.8, b: 0, a: 1}
+  unitPrefabs:
+  - {fileID: 1005237642776706, guid: e44a5fa07bc4cf145a4771f52385f525, type: 2}
+  - {fileID: 1005237642776706, guid: 26a26f6c35e02e741b6011ca4d58b14b, type: 2}
+  - {fileID: 1005237642776706, guid: 6d8addf51e1b32f4ea5444b9e4052acc, type: 2}
+  - {fileID: 1005237642776706, guid: 1486e80e1d1c1034790e21d826787651, type: 2}
   turnState: 0
   gameFinished: 0
   testMode: 0
+  delayPVCBy: 10

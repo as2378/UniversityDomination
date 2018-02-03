@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; //ADDITION: 31/01/18
 
 public class PlayerUI : MonoBehaviour {
 
@@ -12,29 +13,41 @@ public class PlayerUI : MonoBehaviour {
 	*/
 
 	[SerializeField] private Player player;
-	[SerializeField] private UnityEngine.UI.Text header;
-	[SerializeField] private UnityEngine.UI.Text headerHighlight;
-	[SerializeField] private UnityEngine.UI.Text percentOwned;
-	[SerializeField] private UnityEngine.UI.Text beer;
-	[SerializeField] private UnityEngine.UI.Text knowledge;
+	[SerializeField] private Text header;
+	[SerializeField] private Text headerHighlight;
+	[SerializeField] private Text percentOwned;
+	[SerializeField] private Text beer;
+	[SerializeField] private Text knowledge;
 	[SerializeField] private int numberOfSectors;
 	private Color defaultHeaderColor = new Color(0.2f, 0.2f, 0.2f, 1.0f);
 
+	/*
+	 * CHANGED: 31/01/18
+	 * Added an AI label, which will tell the users if the player is human or an AI.
+	 * Also, added 'using UnityEngine.UI' to shorten the code below.
+	 */
 	public void Initialize(Player player, int player_id) {
 
 		this.player = player;
 
-		header = transform.Find("Header").GetComponent<UnityEngine.UI.Text>();
-		headerHighlight = transform.Find("HeaderHighlight").GetComponent<UnityEngine.UI.Text>();
-		percentOwned = transform.Find("PercentOwned_Value").GetComponent<UnityEngine.UI.Text>();
-		beer = transform.Find("Beer_Value").GetComponent<UnityEngine.UI.Text>();
-		knowledge = transform.Find("Knowledge_Value").GetComponent<UnityEngine.UI.Text>();
+		header = transform.Find("Header").GetComponent<Text>();
+		headerHighlight = transform.Find("HeaderHighlight").GetComponent<Text>();
+		percentOwned = transform.Find("PercentOwned_Value").GetComponent<Text>();
+		beer = transform.Find("Beer_Value").GetComponent<Text>();
+		knowledge = transform.Find("Knowledge_Value").GetComponent<Text>();
 		numberOfSectors = player.GetGame().gameMap.GetComponent<Map>().sectors.Length;
 
 		header.text = "Player " + player_id.ToString();
 		headerHighlight.text = header.text;
 		headerHighlight.color = player.GetColor();
-	
+
+		//ADDITION ------------------------------------------------------
+		Transform aiLabel = transform.Find ("AI_Label");
+		if (aiLabel != null && player.GetType () != typeof(NonHumanPlayer)) 
+		{
+			aiLabel.GetComponent<Text> ().text = "";
+		}
+		//---------------------------------------------------------------
 	}
 
 	public void UpdateDisplay() {

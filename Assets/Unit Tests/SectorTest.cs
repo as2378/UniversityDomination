@@ -407,4 +407,13 @@ public class SectorTest
         sectorB.SetOwner(players[1]);
         sectorB.GetUnit().SetLevel(1);
     }
+
+	// ADDITION: 31/01/18	- Clears all objects in the scene after a test has run.
+	[TearDown] 
+	public void ClearSceneAfterTest(){
+		GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+		foreach (GameObject gameObject in objects) {
+			GameObject.Destroy (gameObject);
+		}
+	}
 }

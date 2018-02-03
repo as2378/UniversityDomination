@@ -8,6 +8,9 @@ public class Game : MonoBehaviour {
 	public GameObject gameMap;
     public Player currentPlayer;
 
+	public Color[] playerColours = new Color[]{new Color(0.8f,0,0),new Color(0.7f,0,0.95f),new Color(0.8f,0.8f,0),new Color(0,0.8f,0)}; //ADDITION: added in order to assign generated players a colour.
+	public GameObject[] unitPrefabs;		// ADDITION: added in order to assign generated players units.
+
     //This is used for delaying the PVC's spawn
     private int numberOfTurns = 1;
 
@@ -40,8 +43,13 @@ public class Game : MonoBehaviour {
     }
 
 
-
+	/*
+	 * CHANGED: 31/01/18
+	 * Added the functionality to generate new players, without doing it manually in the inspector.
+	 * This allows us to have two classes; Player and NonHumanPlayer, which will help when programming the AI.
+	 */
     public void CreatePlayers(int numberOfPlayers){
+		this.players = new Player[4]; //ADDITION
 
         // ensure that the specified number of players
         // is at least 2 and does not exceed 4
@@ -51,20 +59,52 @@ public class Game : MonoBehaviour {
         if (numberOfPlayers > 4) 
             numberOfPlayers = 4;
 
-        // mark the specified number of players as human
-        for (int i = 0; i < numberOfPlayers; i++)
-        {
-            players[i].SetHuman(true);
-        }
+		for (int i = 0; i < 4; i++) 
+		{
+			//Creates a player GameObject and gives it either a Player script or a NonHumanPlayer script.
+			GameObject newPlayerGameObject = new GameObject ();
+			newPlayerGameObject.transform.parent = this.gameObject.transform;
+			newPlayerGameObject.name = "Player" + (i+1);
+			if (i < numberOfPlayers) 
+			{
+				newPlayerGameObject.AddComponent<Player> ();
+				this.players [i] = newPlayerGameObject.GetComponent<Player> ();
+				this.players [i].SetHuman (true);
+			} 
+			else 
+			{
+				newPlayerGameObject.AddComponent<NonHumanPlayer> ();
+				this.players [i] = newPlayerGameObject.GetComponent<NonHumanPlayer> ();
+				this.players [i].SetHuman (false);
+			}
 
-        // give all players a reference to this game
+			//Updates the properties of the Player class. 
+			Player newPlayer = newPlayerGameObject.GetComponent<Player> ();
+			PlayerUI newUI = GameObject.Find ("GUI/Player" + (i + 1) + "UI").GetComponent<PlayerUI> ();
+			newPlayer.SetUnitPrefab (unitPrefabs [i]);
+			newPlayer.SetColor (playerColours [i]);
+			newPlayer.SetGui (newUI);
+			newPlayer.SetGame (this);
+
+			//Initialize the newPlayer's GUI.
+			newUI.Initialize (newPlayer, i + 1);
+		}
+		this.currentPlayer = this.players [0];
+		/*
+        // mark the specified number of players as human
+		for (int i = 0; i < numberOfPlayers; i++)
+		{
+			players[i].SetHuman(true);
+		}
+
+		// give all players a reference to this game
 		// and initialize their GUIs
 		for (int i = 0; i < 4; i++)
 		{
 			players[i].SetGame(this);
 			players[i].GetGui().Initialize(players[i], i + 1);
 		}
-
+		*/
     }
 
 	public void InitializeMap() {
@@ -351,61 +391,65 @@ public class Game : MonoBehaviour {
 
 	}
 
+	/*
+	 * ADDITION: 01/02/18
+	 * Checks to see if the current player is a non-human player, and if so, calls its makeMove method.
+	 * This has been added to allow for the AI functionality.
+	 */
+	public void nonHumanPlayerTurn()
+	{
+		if (this.currentPlayer != null) 
+		{
+			if (this.currentPlayer.GetType () == typeof(NonHumanPlayer)) 
+			{
+				NonHumanPlayer compPlayer = (NonHumanPlayer)this.currentPlayer;
+				compPlayer.makeMove (this.turnState);
+			}
+		}
+	}
         
-    void Update () {
-
-        // at the end of each turn, check for a winner and end the game if
-        // necessary; otherwise, start the next player's turn
-
-		
-        // if the current turn has ended and test mode is not enabled
-        if (turnState == TurnState.EndOfTurn && !testMode)
-        {
-            
-            // if there is no winner yet
-            if (GetWinner() == null)
-            {
-                // start the next player's turn
-                NextPlayer();
-                NextTurnState();
-
-                // skip eliminated players
-                while (currentPlayer.IsEliminated())
-                    NextPlayer();
-
-                // spawn units for the next player
-                currentPlayer.SpawnUnits();
-            }
-            else
-                if (!gameFinished)
-                    EndGame();
-        }
+	/*
+	 * CHANGED: 01/02/18
+	 * Removed duplication. Calls UpdateAccessible instead.
+	 */
+	void Update () {			
+		// if test mode is not enabled
+		if (!testMode)
+		{       
+			this.UpdateAccessible ();
+		}
 	}
 
-    public void UpdateAccessible () {
+	/*
+	 * CHANGED: 01/02/18
+	 * Added a call to nonHumanPlayerTurn(), so that when it is the AI's turn, its makeMove method is invoked.
+	 */
+	public void UpdateAccessible () {
+		// at the end of each turn, check for a winner and end the game if
+		// necessary; otherwise, start the next player's turn
+		// can be called by other classes (for testing)
 
-        // copy of Update that can be called by other objects (for testing)
+		if (turnState == TurnState.EndOfTurn)
+		{
+			// if there is no winner yet
+			if (GetWinner() == null)
+			{
+				// start the next player's turn
+				NextPlayer();
+				NextTurnState();
 
-        if (turnState == TurnState.EndOfTurn)
-        {
-            // if there is no winner yet
-            if (GetWinner() == null)
-            {
-                // start the next player's turn
-                NextPlayer();
-                NextTurnState();
+				// skip eliminated players
+				while (currentPlayer.IsEliminated())
+					NextPlayer();
 
-                // skip eliminated players
-                while (currentPlayer.IsEliminated())
-                    NextPlayer();
-
-                // spawn units for the next player
-                currentPlayer.SpawnUnits();
-            }
-            else
-                if (!gameFinished)
-                    EndGame();
-        }
+				// spawn units for the next player
+				currentPlayer.SpawnUnits();
+				nonHumanPlayerTurn ();
+			}
+			else
+				if (!gameFinished)
+					EndGame();
+		}
     }
 
 }

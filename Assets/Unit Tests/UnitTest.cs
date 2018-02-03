@@ -264,4 +264,13 @@ public class UnitTest
         // extract the unit prefab from the player class
         unitPrefab = players[0].GetUnitPrefab();
     }
+
+	// ADDITION: 31/01/18	- Clears all objects in the scene after a test has run.
+	[TearDown] 
+	public void ClearSceneAfterTest(){
+		GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+		foreach (GameObject gameObject in objects) {
+			GameObject.Destroy (gameObject);
+		}
+	}
 }

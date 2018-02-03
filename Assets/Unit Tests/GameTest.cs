@@ -91,7 +91,7 @@ public class GameTest
         
         // MAY BE MADE OBSELETE BY TESTS OF THE INDIVIDUAL METHODS
         Setup();
-        game.InitializeMap();
+        //game.InitializeMap();
 
         // ensure that each player owns 1 sector and has 1 unit at that sector
         List<Sector> listOfAllocatedSectors = new List<Sector>();
@@ -118,32 +118,35 @@ public class GameTest
         yield return null;    
     }
 
-    [UnityTest]
-    public IEnumerator NoUnitSelected_ReturnsFalseWhenUnitIsSelected() {
-        
-        Setup();
-        game.Initialize();
+	/*
+	 * CHANGED: 01/02/18
+	 * Removed call to game.initialize() because this is done in Setup().
+	 */
+	[UnityTest]
+	public IEnumerator NoUnitSelected_ReturnsFalseWhenUnitIsSelected() {
 
-        // clear any selected units
-        foreach (Player player in game.players)
-        {
-            foreach (Unit unit in player.units)
-            {
-                unit.SetSelected(false);
-            }
-        }
+		Setup();
 
-        // assert that NoUnitSelected returns true
-        Assert.IsTrue(game.NoUnitSelected());
+		// clear any selected units
+		foreach (Player player in game.players)
+		{
+			foreach (Unit unit in player.units)
+			{
+				unit.SetSelected(false);
+			}
+		}
 
-        // select a unit
-        players[0].units[0].SetSelected(true);
+		// assert that NoUnitSelected returns true
+		Assert.IsTrue(game.NoUnitSelected());
 
-        // assert that NoUnitSelected returns false
-        Assert.IsFalse(game.NoUnitSelected());
+		// select a unit
+		players[0].units[0].SetSelected(true);
 
-        yield return null;
-    }
+		// assert that NoUnitSelected returns false
+		Assert.IsFalse(game.NoUnitSelected());
+
+		yield return null;
+	}
 
 
     [UnityTest]
@@ -191,31 +194,45 @@ public class GameTest
         yield return null;
     }
 
+	/*
+	 * CHANGED: 01/02/18
+	 * Because Setup() has changed, game is initialized before this test starts, which means that players are now assigned sectors and units.
+	 * These have to be removed during the test to eliminate players, so the unit & sector lists are cleared for players A & B.
+	 * The test no longer has to instantiate units for players C & D, as this is done in SetUp().
+	 */
     [UnityTest]
     public IEnumerator NextPlayer_EliminatedPlayersAreSkipped() {
-        
-        Setup();
 
-        Player playerA = players[0];
-        Player playerB = players[1];
-        Player playerC = players[2];
-        Player playerD = players[3];
+		Setup();
 
-        game.currentPlayer = playerA;
+		Player playerA = players[0];
+		Player playerB = players[1];
+		Player playerC = players[2];
+		//Player playerD = players[3];
 
-        playerC.units.Add(MonoBehaviour.Instantiate(playerC.GetUnitPrefab()).GetComponent<Unit>()); // make player C not eliminated
-        playerD.units.Add(MonoBehaviour.Instantiate(playerD.GetUnitPrefab()).GetComponent<Unit>()); // make player D not eliminated
+		game.currentPlayer = playerA;
 
-        game.SetTurnState(Game.TurnState.EndOfTurn);
-        game.UpdateAccessible(); // removes players that should be eliminated (A and B)
+		//ADDITION: 1/02/18 ---------------------------
+		playerA.units.Clear();			//Eliminate player A
+		playerA.ownedSectors.Clear();
 
-        // ensure eliminated players are skipped
-        Assert.IsTrue(game.currentPlayer == playerC);
-        Assert.IsFalse(playerA.IsActive());
-        Assert.IsFalse(playerB.IsActive());
-        Assert.IsTrue(playerC.IsActive());
+		playerB.units.Clear (); 		//Eliminate player B
+		playerB.ownedSectors.Clear ();
+		//-------------------------------------------
 
-        yield return null;
+		//playerC.units.Add(MonoBehaviour.Instantiate(playerC.GetUnitPrefab()).GetComponent<Unit>()); // make player C not eliminated
+		//playerD.units.Add(MonoBehaviour.Instantiate(playerD.GetUnitPrefab()).GetComponent<Unit>()); // make player D not eliminated
+
+		game.SetTurnState(Game.TurnState.EndOfTurn);
+		game.UpdateAccessible(); // removes players that should be eliminated (A and B)
+
+		// ensure eliminated players are skipped
+		Assert.IsTrue(game.currentPlayer == playerC);
+		Assert.IsFalse(playerA.IsActive());
+		Assert.IsFalse(playerB.IsActive());
+		Assert.IsTrue(playerC.IsActive());
+
+		yield return null;
     }
 
 
@@ -362,36 +379,39 @@ public class GameTest
 
 
     private void Setup() {
-        
-        // initialize the game, map, and players with any references needed
-        // the "GameManager" asset contains a copy of the GameManager object
-        // in the 4x4 Test, but its script lacks references to players & the map
-        game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("GameManager")).GetComponent<Game>();
+		// initialize the game, map, and players with any references needed
+		// the "GameManager" asset contains a copy of the GameManager object
+		// in the 4x4 Test, but its script lacks references to players & the map
+		game = MonoBehaviour.Instantiate(Resources.Load<GameObject>("GameManager")).GetComponent<Game>();
 
-        // the "Map" asset is a copy of the 4x4 Test map, complete with
-        // adjacent sectors and landmarks at (0,1), (1,3), (2,0), and (3,2),
-        // but its script lacks references to the game & sectors
-        map = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Map")).GetComponent<Map>();
+		// the "Map" asset is a copy of the 4x4 Test map, complete with
+		// adjacent sectors and landmarks at (0,1), (1,3), (2,0), and (3,2),
+		// but its script lacks references to the game & sectors
+		map = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Map")).GetComponent<Map>();
 
+		/* REMOVED: 31/01/18 - players are now instantiated using game.Initialize().
         // the "Players" asset contains 4 prefab Player game objects; only
         // references not in its script is each player's color
         players = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Players")).GetComponentsInChildren<Player>();
-		   
+		*/ 
+
 		// the "GUI" asset contains the PlayerUI object for each Player
 		gui = MonoBehaviour.Instantiate(Resources.Load<GameObject>("GUI")).GetComponentsInChildren<PlayerUI>();
+		gui [0].gameObject.transform.parent.gameObject.name = "GUI";
 
 		// the "Scenery" asset contains the camera and light source of the 4x4 Test
 		// can uncomment to view scene as tests run, but significantly reduces speed
 		//MonoBehaviour.Instantiate(Resources.Load<GameObject>("Scenery"));
 
-        // establish references from game to players & map
-        game.players = players;
-        game.gameMap = map.gameObject;
-         
-        // establish references from map to game & sectors (from children)
-        map.game = game;
-        map.sectors = map.gameObject.GetComponentsInChildren<Sector>();
+		// establish references from game to players & map
+		// game.players = players;
+		game.gameMap = map.gameObject;
 
+		// establish references from map to game & sectors (from children)
+		map.game = game;
+		map.sectors = map.gameObject.GetComponentsInChildren<Sector>();
+
+		/* REMOVED: 31/01/18 - again, this information is now assigned in game.Initialize().
         // establish references to SSB 64 colors for each player
         players[0].SetColor(Color.red);
         players[1].SetColor(Color.blue);
@@ -405,9 +425,15 @@ public class GameTest
 			players[i].SetGame(game);
 			players[i].GetGui().Initialize(players[i], i + 1);
 		}
+		*/
 
-        // enable game's test mode
-        game.EnableTestMode();
+		//ADDITION: 01/02/18-----------------------------------------------
+		game.Initialize (); 	//Initialize the game.
+		players = game.players;	//Add global reference to the player list.
+		//-----------------------------------------------------------------
+
+		// enable game's test mode
+		game.EnableTestMode();
     }
 
     private void ClearSectorsAndUnitsOfAllPlayers() {
@@ -423,4 +449,13 @@ public class GameTest
         player.units = new List<Unit>();
         player.ownedSectors = new List<Sector>();
     }
+
+	// ADDITION: 31/01/18	- Clears all objects in the scene after a test has run.
+	[TearDown] 
+	public void ClearSceneAfterTest(){
+		GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+		foreach (GameObject gameObject in objects) {
+			GameObject.Destroy (gameObject);
+		}
+	}
 }

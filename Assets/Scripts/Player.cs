@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public List <Sector> ownedSectors;
-    public List <Unit> units;
+	public List <Sector> ownedSectors = new List<Sector>();
+	public List <Unit> units = new List<Unit>();
 
     [SerializeField] private Game game;
     [SerializeField] private GameObject unitPrefab;
@@ -28,6 +28,14 @@ public class Player : MonoBehaviour {
     public GameObject GetUnitPrefab() {
         return unitPrefab;
     }
+
+	/*
+	 * ADDITION: 31/01/18
+	 * This is used when creating new players. Allows game to assign a unitPrefab to the player.
+	 */
+	public void SetUnitPrefab(GameObject prefab) {
+		this.unitPrefab = prefab;
+	}
 
 	public PlayerUI GetGui() {
 		return gui;

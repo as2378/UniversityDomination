@@ -140,13 +140,17 @@ public class Sector : MonoBehaviour {
         unit = null;
     }
 
+	/*
+	 * CHANGED: 31/01/18
+	 * Added a restriction so that users can only click sectors if the current player is human. 
+	 */
     void OnMouseUpAsButton () {
-
-        // when this sector is clicked, determine the context
-        // and act accordingly
-
-		OnMouseUpAsButtonAccessible();
-
+		// when this sector is clicked, determine the context
+		// and act accordingly
+		if (map.game.currentPlayer.GetType () != typeof(NonHumanPlayer)) 
+		{
+			OnMouseUpAsButtonAccessible();
+		}
     }
 
     public void OnMouseUpAsButtonAccessible() {
@@ -201,6 +205,7 @@ public class Sector : MonoBehaviour {
 
         // advance turn state
         map.game.NextTurnState();
+		map.game.nonHumanPlayerTurn (); //ADDITION 01/02/18
     }
 
     public void MoveIntoFriendlyUnit(Unit otherUnit) {
@@ -210,6 +215,7 @@ public class Sector : MonoBehaviour {
 
         // advance turn state
         map.game.NextTurnState();
+		map.game.nonHumanPlayerTurn (); //ADDITION 01/02/18
     }
 
     public void MoveIntoHostileUnit(Unit attackingUnit, Unit defendingUnit) {

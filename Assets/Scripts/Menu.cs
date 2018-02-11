@@ -6,8 +6,7 @@ public class Menu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-		
+    
 	}
 	
 	// Update is called once per frame
@@ -16,7 +15,8 @@ public class Menu : MonoBehaviour {
 	}
 
 	public void StartButtonClicked() {
-		print ("hi");
+        GameObject.Find("GameManager").GetComponent<Game>().Initialize();
+        gameObject.SetActive(false);
 	}
 
 

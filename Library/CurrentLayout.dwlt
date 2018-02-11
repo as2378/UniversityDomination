@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 526
-    y: 229
+    x: 929
+    y: 358
     width: 502
-    height: 678
+    height: 675
   m_ShowMode: 0
   m_Title: 
   m_RootView: {fileID: 4}
@@ -61,7 +61,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 502
-    height: 678
+    height: 675
   m_MinSize: {x: 100, y: 122}
   m_MaxSize: {x: 4000, y: 4022}
   m_ActualView: {fileID: 17}
@@ -87,11 +87,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 502
-    height: 678
+    height: 675
   m_MinSize: {x: 100, y: 122}
   m_MaxSize: {x: 4000, y: 4022}
   vertical: 0
-  controlID: 9
+  controlID: 567
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 113
+  controlID: 161
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 136
+  controlID: 11
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -208,8 +208,8 @@ MonoBehaviour:
     y: 0
     width: 359
     height: 631
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 111
+  controlID: 130
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -257,8 +257,8 @@ MonoBehaviour:
     y: 0
     width: 387
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 0
-  controlID: 112
+  controlID: 10
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -398,10 +398,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 526
-    y: 251
+    x: 929
+    y: 380
     width: 502
-    height: 656
+    height: 653
   m_TestTypeToolbarIndex: 0
   m_PlayModeTestListGUI:
     m_Window: {fileID: 17}
@@ -410,7 +410,7 @@ MonoBehaviour:
       name: University Domination
       fullName: University Domination
       resultStatus: 1
-      duration: 3.797335
+      duration: 4.1626487
       messages: 
       output: 
       stacktrace: 
@@ -418,11 +418,11 @@ MonoBehaviour:
       ignoredOrSkipped: 0
       description: 
       isSuite: 1
-    - id: '[C:/Users/TomJames/Documents/Tom/UnityProjects/Assessment3/UniversityDomination/Library/ScriptAssemblies/Assembly-CSharp.dll][suite]'
+    - id: '[C:/Users/TomJames/Documents/Tom/UnityProjects/UniversityDomination/Library/ScriptAssemblies/Assembly-CSharp.dll][suite]'
       name: Assembly-CSharp.dll
-      fullName: C:/Users/TomJames/Documents/Tom/UnityProjects/Assessment3/UniversityDomination/Library/ScriptAssemblies/Assembly-CSharp.dll
+      fullName: C:/Users/TomJames/Documents/Tom/UnityProjects/UniversityDomination/Library/ScriptAssemblies/Assembly-CSharp.dll
       resultStatus: 1
-      duration: 3.7528763
+      duration: 4.1182003
       messages: 
       output: 
       stacktrace: 
@@ -434,7 +434,7 @@ MonoBehaviour:
       name: GameTest
       fullName: GameTest
       resultStatus: 1
-      duration: 1.3111397
+      duration: 1.3132164
       messages: 
       output: 
       stacktrace: 
@@ -446,7 +446,7 @@ MonoBehaviour:
       name: CreatePlayers_AtLeastTwoPlayersAreHuman
       fullName: GameTest.CreatePlayers_AtLeastTwoPlayersAreHuman
       resultStatus: 1
-      duration: 0.1203562
+      duration: 0.1231285
       messages: 
       output: 
       stacktrace: 
@@ -458,7 +458,7 @@ MonoBehaviour:
       name: CreatePlayers_AtMostFourPlayersAreHuman
       fullName: GameTest.CreatePlayers_AtMostFourPlayersAreHuman
       resultStatus: 1
-      duration: 0.0504183
+      duration: 0.0504163
       messages: 
       output: 
       stacktrace: 
@@ -470,7 +470,7 @@ MonoBehaviour:
       name: CreatePlayers_FourPlayersAreHuman
       fullName: GameTest.CreatePlayers_FourPlayersAreHuman
       resultStatus: 1
-      duration: 0.0504619
+      duration: 0.0505262
       messages: 
       output: 
       stacktrace: 
@@ -482,7 +482,7 @@ MonoBehaviour:
       name: CreatePlayers_ThreePlayersAreHumanAndOneNot
       fullName: GameTest.CreatePlayers_ThreePlayersAreHumanAndOneNot
       resultStatus: 1
-      duration: 0.0505301
+      duration: 0.0500266
       messages: 
       output: 
       stacktrace: 
@@ -494,7 +494,7 @@ MonoBehaviour:
       name: CreatePlayers_TwoPlayersAreHumanAndTwoNot
       fullName: GameTest.CreatePlayers_TwoPlayersAreHumanAndTwoNot
       resultStatus: 1
-      duration: 0.0501708
+      duration: 0.0502621
       messages: 
       output: 
       stacktrace: 
@@ -506,7 +506,7 @@ MonoBehaviour:
       name: EndGame_GameEndsCorrectlyWithNoCurrentPlayerAndNoActivePlayersAndNoTurnState
       fullName: GameTest.EndGame_GameEndsCorrectlyWithNoCurrentPlayerAndNoActivePlayersAndNoTurnState
       resultStatus: 1
-      duration: 0.0499567
+      duration: 0.0505863
       messages: 
       output: "GAME FINISHED\r\n"
       stacktrace: 
@@ -518,7 +518,7 @@ MonoBehaviour:
       name: GetWinner_NoWinnerWhenAPlayerHasLandmarkAndAnotherHasUnits
       fullName: GameTest.GetWinner_NoWinnerWhenAPlayerHasLandmarkAndAnotherHasUnits
       resultStatus: 1
-      duration: 0.0501752
+      duration: 0.0503571
       messages: 
       output: 
       stacktrace: 
@@ -530,7 +530,7 @@ MonoBehaviour:
       name: GetWinner_NoWinnerWhenMultiplePlayersOwningLandmarks
       fullName: GameTest.GetWinner_NoWinnerWhenMultiplePlayersOwningLandmarks
       resultStatus: 1
-      duration: 0.0498046
+      duration: 0.0502372
       messages: 
       output: 
       stacktrace: 
@@ -542,7 +542,7 @@ MonoBehaviour:
       name: GetWinner_NoWinnerWhenMultiplePlayersWithUnits
       fullName: GameTest.GetWinner_NoWinnerWhenMultiplePlayersWithUnits
       resultStatus: 1
-      duration: 0.0510556
+      duration: 0.0505169
       messages: 
       output: 
       stacktrace: 
@@ -554,7 +554,7 @@ MonoBehaviour:
       name: GetWinner_OnePlayerWithLandmarksAndUnitsWins
       fullName: GameTest.GetWinner_OnePlayerWithLandmarksAndUnitsWins
       resultStatus: 1
-      duration: 0.0508096
+      duration: 0.0523709
       messages: 
       output: 
       stacktrace: 
@@ -566,7 +566,7 @@ MonoBehaviour:
       name: InitializeMap_OneLandmarkAllocatedWithUnitPerPlayer
       fullName: GameTest.InitializeMap_OneLandmarkAllocatedWithUnitPerPlayer
       resultStatus: 1
-      duration: 0.0504119
+      duration: 0.049969
       messages: 
       output: 
       stacktrace: 
@@ -578,7 +578,7 @@ MonoBehaviour:
       name: NextPlayer_CurrentPlayerChangesToNextPlayerEachTime
       fullName: GameTest.NextPlayer_CurrentPlayerChangesToNextPlayerEachTime
       resultStatus: 1
-      duration: 0.0507347
+      duration: 0.050421
       messages: 
       output: 
       stacktrace: 
@@ -590,7 +590,7 @@ MonoBehaviour:
       name: NextPlayer_EliminatedPlayersAreSkipped
       fullName: GameTest.NextPlayer_EliminatedPlayersAreSkipped
       resultStatus: 1
-      duration: 0.0505214
+      duration: 0.0503229
       messages: 
       output: 
       stacktrace: 
@@ -602,7 +602,7 @@ MonoBehaviour:
       name: NextTurnState_TurnStateProgressesCorrectly
       fullName: GameTest.NextTurnState_TurnStateProgressesCorrectly
       resultStatus: 1
-      duration: 0.0504301
+      duration: 0.0504882
       messages: 
       output: 
       stacktrace: 
@@ -614,7 +614,67 @@ MonoBehaviour:
       name: NoUnitSelected_ReturnsFalseWhenUnitIsSelected
       fullName: GameTest.NoUnitSelected_ReturnsFalseWhenUnitIsSelected
       resultStatus: 1
-      duration: 0.0507575
+      duration: 0.0503885
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][NonHumanPlayerTest][suite]'
+      name: NonHumanPlayerTest
+      fullName: NonHumanPlayerTest
+      resultStatus: 1
+      duration: 0.3313798
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][NonHumanPlayerTest.FindBestMove_AllMovesSameScore]'
+      name: FindBestMove_AllMovesSameScore
+      fullName: NonHumanPlayerTest.FindBestMove_AllMovesSameScore
+      resultStatus: 1
+      duration: 0.0499279
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][NonHumanPlayerTest.FindBestMove_NoPossibleMoves]'
+      name: FindBestMove_NoPossibleMoves
+      fullName: NonHumanPlayerTest.FindBestMove_NoPossibleMoves
+      resultStatus: 1
+      duration: 0.0501667
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][NonHumanPlayerTest.FindBestMove_OneBestMoveThreeBadMoves]'
+      name: FindBestMove_OneBestMoveThreeBadMoves
+      fullName: NonHumanPlayerTest.FindBestMove_OneBestMoveThreeBadMoves
+      resultStatus: 1
+      duration: 0.0498651
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][NonHumanPlayerTest.MakeMove_executesValidMove]'
+      name: MakeMove_executesValidMove
+      fullName: NonHumanPlayerTest.MakeMove_executesValidMove
+      resultStatus: 1
+      duration: 0.0505588
       messages: 
       output: 
       stacktrace: 
@@ -626,7 +686,7 @@ MonoBehaviour:
       name: PlayerTest
       fullName: PlayerTest
       resultStatus: 1
-      duration: 0.7468063
+      duration: 0.7474266
       messages: 
       output: 
       stacktrace: 
@@ -638,7 +698,7 @@ MonoBehaviour:
       name: CaptureLandmark_BothPlayersBeerAmountCorrect
       fullName: PlayerTest.CaptureLandmark_BothPlayersBeerAmountCorrect
       resultStatus: 1
-      duration: 0.0506244
+      duration: 0.0496875
       messages: 
       output: 
       stacktrace: 
@@ -650,7 +710,7 @@ MonoBehaviour:
       name: CaptureLandmark_BothPlayersKnowledgeAmountCorrect
       fullName: PlayerTest.CaptureLandmark_BothPlayersKnowledgeAmountCorrect
       resultStatus: 1
-      duration: 0.0502572
+      duration: 0.0505289
       messages: 
       output: 
       stacktrace: 
@@ -662,7 +722,7 @@ MonoBehaviour:
       name: CaptureLandmark_NeutralLandmarkPlayerBeerAmountCorrect
       fullName: PlayerTest.CaptureLandmark_NeutralLandmarkPlayerBeerAmountCorrect
       resultStatus: 1
-      duration: 0.050732
+      duration: 0.0504139
       messages: 
       output: 
       stacktrace: 
@@ -674,7 +734,7 @@ MonoBehaviour:
       name: CaptureLandmark_NeutralLandmarkPlayerKnowledgeAmountCorrect
       fullName: PlayerTest.CaptureLandmark_NeutralLandmarkPlayerKnowledgeAmountCorrect
       resultStatus: 1
-      duration: 0.0516013
+      duration: 0.0516632
       messages: 
       output: 
       stacktrace: 
@@ -686,7 +746,7 @@ MonoBehaviour:
       name: CaptureSector_ChangesOwner
       fullName: PlayerTest.CaptureSector_ChangesOwner
       resultStatus: 1
-      duration: 0.050921
+      duration: 0.049402
       messages: 
       output: 
       stacktrace: 
@@ -698,7 +758,7 @@ MonoBehaviour:
       name: IsEliminated_PlayerWithNoUnitsAndNoLandmarksEliminated
       fullName: PlayerTest.IsEliminated_PlayerWithNoUnitsAndNoLandmarksEliminated
       resultStatus: 1
-      duration: 0.0507692
+      duration: 0.0504218
       messages: 
       output: 
       stacktrace: 
@@ -710,7 +770,7 @@ MonoBehaviour:
       name: SpawnUnits_NotSpawnedWhenLandmarkNotOwned
       fullName: PlayerTest.SpawnUnits_NotSpawnedWhenLandmarkNotOwned
       resultStatus: 1
-      duration: 0.0504076
+      duration: 0.0504759
       messages: 
       output: 
       stacktrace: 
@@ -722,7 +782,7 @@ MonoBehaviour:
       name: SpawnUnits_NotSpawnedWhenLandmarkOwnedAndOccupied
       fullName: PlayerTest.SpawnUnits_NotSpawnedWhenLandmarkOwnedAndOccupied
       resultStatus: 1
-      duration: 0.0502019
+      duration: 0.0505043
       messages: 
       output: 
       stacktrace: 
@@ -734,7 +794,7 @@ MonoBehaviour:
       name: SpawnUnits_SpawnedWhenLandmarkOwnedAndUnoccupied
       fullName: PlayerTest.SpawnUnits_SpawnedWhenLandmarkOwnedAndUnoccupied
       resultStatus: 1
-      duration: 0.0498472
+      duration: 0.0504557
       messages: 
       output: 
       stacktrace: 
@@ -746,7 +806,7 @@ MonoBehaviour:
       name: SectorTest
       fullName: SectorTest
       resultStatus: 1
-      duration: 0.9112028
+      duration: 0.9117415
       messages: 
       output: 
       stacktrace: 
@@ -758,7 +818,7 @@ MonoBehaviour:
       name: AdjacentSelectedUnit_SectorsAreAdjacent
       fullName: SectorTest.AdjacentSelectedUnit_SectorsAreAdjacent
       resultStatus: 1
-      duration: 0.0508029
+      duration: 0.0505409
       messages: 
       output: 
       stacktrace: 
@@ -770,7 +830,7 @@ MonoBehaviour:
       name: ClearUnit_UnitRemovedFromSector
       fullName: SectorTest.ClearUnit_UnitRemovedFromSector
       resultStatus: 1
-      duration: 0.0507882
+      duration: 0.050413
       messages: 
       output: 
       stacktrace: 
@@ -782,7 +842,7 @@ MonoBehaviour:
       name: Highlight_SectorColourCorrect
       fullName: SectorTest.Highlight_SectorColourCorrect
       resultStatus: 1
-      duration: 0.0511692
+      duration: 0.0501738
       messages: 
       output: 
       stacktrace: 
@@ -794,7 +854,7 @@ MonoBehaviour:
       name: Initialize_OwnedAndNotOwnedSectorsOwnerAndColor
       fullName: SectorTest.Initialize_OwnedAndNotOwnedSectorsOwnerAndColor
       resultStatus: 1
-      duration: 0.050728
+      duration: 0.0504929
       messages: 
       output: 
       stacktrace: 
@@ -806,7 +866,7 @@ MonoBehaviour:
       name: MoveIntoFriendlyUnit_UnitsSwapSectorsAndTurnStateProgressed
       fullName: SectorTest.MoveIntoFriendlyUnit_UnitsSwapSectorsAndTurnStateProgressed
       resultStatus: 1
-      duration: 0.0583388
+      duration: 0.0507597
       messages: 
       output: 
       stacktrace: 
@@ -818,7 +878,7 @@ MonoBehaviour:
       name: MoveIntoHostileUnit_AttackingUnitTakesSectorAndLevelUpAndTurnEnd
       fullName: SectorTest.MoveIntoHostileUnit_AttackingUnitTakesSectorAndLevelUpAndTurnEnd
       resultStatus: 1
-      duration: 0.0504277
+      duration: 0.0502129
       messages: 
       output: 
       stacktrace: 
@@ -830,7 +890,7 @@ MonoBehaviour:
       name: MoveIntoHostileUnit_DefendingUnitDefendsSectorAndTurnEnd
       fullName: SectorTest.MoveIntoHostileUnit_DefendingUnitDefendsSectorAndTurnEnd
       resultStatus: 1
-      duration: 0.0504199
+      duration: 0.0503928
       messages: 
       output: 
       stacktrace: 
@@ -842,7 +902,7 @@ MonoBehaviour:
       name: MoveIntoHostileUnit_TieConflict_DefendingUnitDefendsSectorAndTurnEnd
       fullName: SectorTest.MoveIntoHostileUnit_TieConflict_DefendingUnitDefendsSectorAndTurnEnd
       resultStatus: 1
-      duration: 0.0503932
+      duration: 0.0504572
       messages: 
       output: 
       stacktrace: 
@@ -854,7 +914,7 @@ MonoBehaviour:
       name: MoveIntoUnoccupiedSector_NewSectorHasUnitAndOldDoesNotAndTurnStateProgressed
       fullName: SectorTest.MoveIntoUnoccupiedSector_NewSectorHasUnitAndOldDoesNotAndTurnStateProgressed
       resultStatus: 1
-      duration: 0.0504403
+      duration: 0.0499821
       messages: 
       output: 
       stacktrace: 
@@ -866,7 +926,7 @@ MonoBehaviour:
       name: OnMouseAsButton_CorrectUnitIsSelected
       fullName: SectorTest.OnMouseAsButton_CorrectUnitIsSelected
       resultStatus: 1
-      duration: 0.0504439
+      duration: 0.0504725
       messages: 
       output: 
       stacktrace: 
@@ -878,7 +938,7 @@ MonoBehaviour:
       name: SetOwner_SectorOwnerAndColorCorrect
       fullName: SectorTest.SetOwner_SectorOwnerAndColorCorrect
       resultStatus: 1
-      duration: 0.0504075
+      duration: 0.0504531
       messages: 
       output: 
       stacktrace: 
@@ -890,7 +950,7 @@ MonoBehaviour:
       name: UnitTest
       fullName: UnitTest
       resultStatus: 1
-      duration: 0.6634936
+      duration: 0.6627319
       messages: 
       output: 
       stacktrace: 
@@ -902,7 +962,7 @@ MonoBehaviour:
       name: DestroySelf_UnitNotInSectorAndNotInPlayersUnitsList
       fullName: UnitTest.DestroySelf_UnitNotInSectorAndNotInPlayersUnitsList
       resultStatus: 1
-      duration: 0.0505401
+      duration: 0.0505941
       messages: 
       output: 
       stacktrace: 
@@ -914,7 +974,7 @@ MonoBehaviour:
       name: LevelUp_UnitLevelDoesNotPastFive
       fullName: UnitTest.LevelUp_UnitLevelDoesNotPastFive
       resultStatus: 1
-      duration: 0.0499965
+      duration: 0.0505199
       messages: 
       output: 
       stacktrace: 
@@ -926,7 +986,7 @@ MonoBehaviour:
       name: LevelUp_UnitLevelIncreasesByOne
       fullName: UnitTest.LevelUp_UnitLevelIncreasesByOne
       resultStatus: 1
-      duration: 0.050582
+      duration: 0.0505365
       messages: 
       output: 
       stacktrace: 
@@ -938,7 +998,7 @@ MonoBehaviour:
       name: MoveToFriendly_UnitInCorrectSector
       fullName: UnitTest.MoveToFriendly_UnitInCorrectSector
       resultStatus: 1
-      duration: 0.0504503
+      duration: 0.0497799
       messages: 
       output: 
       stacktrace: 
@@ -950,7 +1010,7 @@ MonoBehaviour:
       name: MoveToFriendlyFromNull_UnitInCorrectSector
       fullName: UnitTest.MoveToFriendlyFromNull_UnitInCorrectSector
       resultStatus: 1
-      duration: 0.0517695
+      duration: 0.050533
       messages: 
       output: 
       stacktrace: 
@@ -962,7 +1022,7 @@ MonoBehaviour:
       name: MoveToNeutral_UnitInCorrectSector
       fullName: UnitTest.MoveToNeutral_UnitInCorrectSector
       resultStatus: 1
-      duration: 0.0499052
+      duration: 0.0502278
       messages: 
       output: 
       stacktrace: 
@@ -974,7 +1034,7 @@ MonoBehaviour:
       name: SelectAndDeselect_SelectedTrueWhenSelectedFalseWhenDeselected
       fullName: UnitTest.SelectAndDeselect_SelectedTrueWhenSelectedFalseWhenDeselected
       resultStatus: 1
-      duration: 0.0502926
+      duration: 0.0500348
       messages: 
       output: 
       stacktrace: 
@@ -986,7 +1046,7 @@ MonoBehaviour:
       name: SwapPlaces_UnitsInCorrectNewSectors
       fullName: UnitTest.SwapPlaces_UnitsInCorrectNewSectors
       resultStatus: 1
-      duration: 0.0502853
+      duration: 0.0504564
       messages: 
       output: 
       stacktrace: 
@@ -997,10 +1057,10 @@ MonoBehaviour:
     m_ResultText: 
     m_ResultStacktrace: 
     m_TestListState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 360}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 48c5a39a780766a1a39afee50acabaf9ac342e52a7179964ffffff7f
+      m_ExpandedIDs: 48c5a39a780766a10acabaf927d9060f21f2a43fac342e52a7179964ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1111,16 +1171,15 @@ MonoBehaviour:
     m_Folders: []
   m_ViewMode: 0
   m_StartGridSize: 64
-  m_LastFolders:
-  - Assets
+  m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\TomJames\Documents\Tom\UnityProjects\Assessment3\UniversityDomination
+  m_LastProjectPath: C:\Users\TomJames\Documents\Tom\UnityProjects\UniversityDomination
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 36380000
     m_LastClickedID: 14390
-    m_ExpandedIDs: 00000000402700005e2a0000fe2b0000
+    m_ExpandedIDs: 000000001e2d0000443800003e3c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1148,7 +1207,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000402700005e2a0000fe2b0000
+    m_ExpandedIDs: 000000001e2d0000443800003e3c0000c03c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1266,7 +1325,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: b46cffffde6cffff38e9ffffa6fbffff00000000
+    m_ExpandedIDs: 109ffeff3a9ffeff561fffffec56ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1321,9 +1380,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 927.9839, y: 73.60396, z: 701.956}
+    m_Target: {x: -12.67804, y: -337.171, z: -230.61713}
     speed: 2
-    m_Value: {x: 927.9839, y: 73.60396, z: 701.956}
+    m_Value: {x: -12.67804, y: -337.171, z: -230.61713}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -1346,13 +1405,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.031968124, y: 0.1612083, z: -0.005225238, w: 0.9863887}
+    m_Target: {x: 0.002584607, y: 0.89137334, z: -0.45323402, w: 0.0050841565}
     speed: 2
-    m_Value: {x: -0.031968124, y: -0.1612083, z: 0.005225238, w: -0.9863887}
+    m_Value: {x: 0.002584607, y: 0.89137334, z: -0.45323402, w: 0.0050841565}
   m_Size:
-    m_Target: 1093.3488
+    m_Target: 564.51843
     speed: 2
-    m_Value: 1093.3488
+    m_Value: 564.51843
   m_Ortho:
     m_Target: 0
     speed: 2

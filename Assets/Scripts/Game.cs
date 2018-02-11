@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Game : MonoBehaviour {
 
     public Player[] players;
 	public GameObject gameMap;
     public Player currentPlayer;
+    public GameObject menu; //ADDITION
 
 	public Color[] playerColours = new Color[]{new Color(0.8f,0,0),new Color(0.7f,0,0.95f),new Color(0.8f,0.8f,0),new Color(0,0.8f,0)}; //ADDITION: added in order to assign generated players a colour.
 	public GameObject[] unitPrefabs;		// ADDITION: added in order to assign generated players units.
@@ -427,6 +429,14 @@ public class Game : MonoBehaviour {
 		// if test mode is not enabled
 		if (!testMode)
 		{       
+            /*
+             * ADDITION: 11/02/2018
+             * Checks if the ESCAPE key has been pressed
+             */
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                menu.SetActive(true);
+            }
+
 			this.UpdateAccessible ();
 		}
 	}

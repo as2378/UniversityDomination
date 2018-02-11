@@ -107,6 +107,10 @@ public class Game : MonoBehaviour {
 		*/
     }
 
+    /*
+     * ADDITION: 27/01/18
+     * Added the checks to ensure there is at most 1 PVC on the map.
+     * */
 	public void InitializeMap() {
 
         // initialize all sectors, allocate players to landmarks,
@@ -206,6 +210,11 @@ public class Game : MonoBehaviour {
         return true;
     }
 
+    /*
+     * ADDITION: 27/01/18
+     * Added PVC spawning. At the start of each turn the game checks if
+     * it's time to randomly spawn the PVC.
+     */
     public void NextPlayer() {
 
         // set the current player to the next player in the order
@@ -247,6 +256,7 @@ public class Game : MonoBehaviour {
     }
 
     /*
+     * ADDITION: 27/01/18
      * This method is called every time NextPlayer() is invoked.
      * 
      * The method will spawn the PVC randomly on the map if
@@ -274,6 +284,7 @@ public class Game : MonoBehaviour {
     }
 
     /*
+     * ADDITION: 27/01/18
      * CountPVC() will return the number of PVCs on the map
      * */
     private int CountPVC() {
@@ -452,4 +463,25 @@ public class Game : MonoBehaviour {
 		}
     }
 
+    /*
+     * ADDITION: 11/02/2018
+     * Passes the turn to the next player.
+     * Invoked when the PassTurnButton is clicked.
+     */
+    public void PassTurn()
+    {
+        Sector[] sectors = gameMap.GetComponentsInChildren<Sector>();
+
+        foreach (Sector sector in sectors)
+        {
+            Unit unit = sector.GetUnit();
+
+            if (unit != null && unit.IsSelected())
+            {
+                unit.Deselect();
+            }
+        }
+
+        EndTurn();
+    }
 }

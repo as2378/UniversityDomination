@@ -24,6 +24,17 @@ public class Game : MonoBehaviour {
     [SerializeField] private bool testMode = false;
     [SerializeField] private int delayPVCBy = 10; // turns
 
+	private int numberOfPlayers = 2; //ADDITION: 12/02/18
+
+	/*
+	 * ADDITION: 12/02/18
+	 * This is used to set the numberOfPlayers attribute which is used to provide the game with
+	 * the value from the menu slider.
+	 */
+	public void SetNumberOfPlayers(int value){
+		this.numberOfPlayers = value;
+	}
+
     public TurnState GetTurnState() {
         return turnState;
     }
@@ -363,12 +374,26 @@ public class Game : MonoBehaviour {
         return winner;
     }
 
+	/*
+	 * CHANGED: 12/02/18
+	 * Added the removal of units from the game.
+	 * Changed the code so that it calls the endgame menu.
+	 */
     public void EndGame() {
         gameFinished = true;
         currentPlayer.SetActive(false);
         currentPlayer = null;
         turnState = TurnState.NULL;
         Debug.Log("GAME FINISHED");
+
+		foreach (Player player in players) {
+			for (int i = 0; i < player.units.Count; i++) {
+				player.units[i].DestroySelf ();
+			}
+		}
+
+		menu.SetActive (true);
+		menu.GetComponent<Menu> ().ShowGameOverMenu ();
     }
 
 	public void UpdateGUI() {
@@ -379,14 +404,14 @@ public class Game : MonoBehaviour {
 		}
 	}
         
-    public void Initialize () {
+	public void Initialize () {
         
         // initialize the game
 
 
         // create a specified number of human players
         // *** currently hard-wired to 2 for testing ***
-        CreatePlayers(2);
+		CreatePlayers(this.numberOfPlayers);
 
         // initialize the map and allocate players to landmarks
         InitializeMap();

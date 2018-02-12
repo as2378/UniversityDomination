@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public class Menu : MonoBehaviour {
     [SerializeField] private GameObject InGame;
+	[SerializeField] private GameObject OutGame;
     [SerializeField] private GameObject loadButton;
+	[SerializeField] private GameObject newGameMenu;
+	[SerializeField] private GameObject endGame;
 
 	void Start () {
         /*
@@ -25,6 +29,8 @@ public class Menu : MonoBehaviour {
      * is invoked and a new game is initialized.
      * */
 	public void StartButtonClicked() {
+		int numberOfPlayers = (int) GameObject.Find ("PlayerSlider").GetComponent<Slider> ().value;
+		GameObject.Find ("GameManager").GetComponent<Game> ().SetNumberOfPlayers (numberOfPlayers);
         GameObject.Find("GameManager").GetComponent<Game>().Initialize();
         InGame.SetActive(true);
         GameObject.Find("OutGame").SetActive(false);
@@ -70,4 +76,27 @@ public class Menu : MonoBehaviour {
 
         gameObject.SetActive(false);
     }
+
+	/*
+	 * ADDITION: 12/02/18
+	 * Click functionality for the NewGame button. This button is used to open the number of players menu.
+	 */
+	public void NewGameButtonClicked(){
+		this.newGameMenu.SetActive (true);
+		GameObject.Find ("NewGameButton").SetActive (false);
+	}
+
+	/*
+	 * ADDITION: 12/02/18
+	 * Exit button functionality to allow the user to exit the game once it has finished.
+	 */
+	public void ExitButtonClicked(){
+		Application.Quit ();
+	}
+
+	public void ShowGameOverMenu(){
+		this.InGame.SetActive (false);
+		this.OutGame.SetActive (false);
+		this.endGame.SetActive (true);
+	}
 }

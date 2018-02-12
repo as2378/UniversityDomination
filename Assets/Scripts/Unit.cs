@@ -114,6 +114,26 @@ public class Unit : MonoBehaviour {
 
             // capture the target sector for the owner of this unit
             owner.Capture(targetSector);
+            if (targetSector.GetPVC() == true)
+            {
+                GameObject Catcher = GameObject.Find("Catcher");
+                MovementLR CatcherMovement = Catcher.GetComponent<MovementLR>();
+                int currentBeer = targetSector.GetOwner().GetBeer();
+                int currentBook = targetSector.GetOwner().GetKnowledge();
+                targetSector.GetOwner().SetBeer(currentBeer + CatcherMovement.GetlastBeer());
+                targetSector.GetOwner().SetKnowledge(currentBook + CatcherMovement.GetlastBook());
+            }
+        }
+
+        if (targetSector.GetPVC() == true)
+        {
+            GameObject Catcher = GameObject.Find("Catcher");
+            MovementLR CatcherMovement = Catcher.GetComponent<MovementLR>();
+            int stall = CatcherMovement.StartDropperGame();
+            int currentBeer = this.owner.GetBeer();
+            int currentBook = this.owner.GetKnowledge();
+            this.owner.SetBeer(currentBeer + CatcherMovement.GetBeer());
+            this.owner.SetKnowledge(currentBook + CatcherMovement.GetBook());
         }
 
     }

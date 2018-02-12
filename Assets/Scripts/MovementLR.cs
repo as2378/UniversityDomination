@@ -5,14 +5,43 @@ using UnityEngine;
 public class MovementLR : MonoBehaviour
 {
     public float movementSpeed = 10;
-    public float BookScore;
-    public float BeerScore;
+    public int BookScore;
+    public int BeerScore;
+    public int lastpersonBeerScore;
+    public int lastpersonBookScore;
+    private GameObject mainCamera;
+    private GameObject DropperCamera;
+    private GameObject GUI;
     // Use this for initialization
-    void Start()
+    public void Start()
     {
-        float spawn = Random.Range(0.3f, 1.75f);
-        InvokeRepeating("SpawnBeer", 2.0f, spawn);
 
+        mainCamera = GameObject.Find("MainCamera");
+        GUI = GameObject.Find("GUI");
+        DropperCamera = GameObject.Find("DropperCamera");
+        mainCamera.SetActive(true);
+        GUI.SetActive(true);
+        DropperCamera.SetActive(false);
+
+    }
+
+    public int StartDropperGame()
+    {
+        mainCamera.SetActive(false);
+        GUI.SetActive(true);
+        DropperCamera.SetActive(true);
+        for (int i = 0; i < 20; i++)
+        {
+            float spawn = Random.Range(0.3f, 1.75f);
+            InvokeRepeating("SpawnBeer", 2.0f, spawn);
+
+        }
+        lastpersonBookScore = BookScore;
+        lastpersonBeerScore = BeerScore;
+        return 4;
+        mainCamera.SetActive(true);
+        GUI.SetActive(true);
+        DropperCamera.SetActive(false);
     }
 
     void SpawnBeer()
@@ -54,5 +83,25 @@ public class MovementLR : MonoBehaviour
         {
             transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
         }
+    }
+    public int GetBeer()
+    {
+        int ConvertedScore= Mathf.RoundToInt(BeerScore/2);
+        return ConvertedScore;
+    }
+    public int GetBook()
+    {
+        int ConvertedScore = Mathf.RoundToInt(BookScore / 2);
+        return ConvertedScore;
+    }
+    public int GetlastBeer()
+    {
+        int ConvertedScore = Mathf.RoundToInt(lastpersonBeerScore / 2);
+        return ConvertedScore;
+    }
+    public int GetlastBook()
+    {
+        int ConvertedScore = Mathf.RoundToInt(lastpersonBookScore / 2);
+        return ConvertedScore;
     }
 }

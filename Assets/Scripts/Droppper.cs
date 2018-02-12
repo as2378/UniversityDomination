@@ -6,8 +6,9 @@ public class Droppper : MonoBehaviour
 {
     public float dropSpeed = 10;
     public float rotateSpeed = 10;
-    public float BeerScore;
-    public float BookScore;
+    public int BeerScore;
+    public int BookScore;
+
 
     // Use this for initialization
     void Start()

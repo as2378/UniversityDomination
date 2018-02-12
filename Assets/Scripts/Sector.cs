@@ -148,9 +148,12 @@ public class Sector : MonoBehaviour {
     void OnMouseUpAsButton () {
 		// when this sector is clicked, determine the context
 		// and act accordingly
-		if (map.game.currentPlayer.GetType () != typeof(NonHumanPlayer)) 
+		if (map.game.currentPlayer != null) 
 		{
-			OnMouseUpAsButtonAccessible();
+			if (map.game.currentPlayer.GetType () != typeof(NonHumanPlayer)) 
+			{
+				OnMouseUpAsButtonAccessible ();
+			}
 		}
     }
 

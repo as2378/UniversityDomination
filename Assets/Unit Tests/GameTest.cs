@@ -378,6 +378,131 @@ public class GameTest
     }
 
 
+	/**
+	 * SpawnPVC_spawnsAfter10Turns()
+	 * Tests that calling NextPlayer 9 times (simulating 10 turns) causes the PVC unit to spawn in a sector.
+	 * ADDITION: 12/02/18
+	 */
+	[UnityTest]
+	public IEnumerator SpawnPVC_spawnsAfter10Turns (){
+		Setup ();
+
+		for (int i = 1; i < 10; i++) 
+		{
+			game.NextPlayer ();	//Change turns 9 times.
+		}
+
+		int numberOfPVCs = numberOfPVCSectors (); //Count the number of PVC sectors
+		Assert.AreEqual (1, numberOfPVCs); //Assert that numberOfPVCs is 1.
+
+		yield return null;
+	}
+
+	/**
+	 * SpawnPVC_doesNotSpawnAfterFirstTurn()
+	 * Tests that calling NextPlayer when the turn count is under 10, does not causes the PVC unit to spawn.
+	 * ADDITION: 12/02/18
+	 */
+	[UnityTest]
+	public IEnumerator SpawnPVC_doesNotSpawnAfterFirstTurn (){
+		Setup ();
+
+		game.NextPlayer (); //Calls next player to switch turns.
+
+		int numberOfPVCs = numberOfPVCSectors (); //Count the number of PVC sectors
+
+		Assert.AreEqual (0, numberOfPVCs); //Assert that numberOfPVCs is zero.
+
+		yield return null;
+	}
+
+	/**
+	 * SpawnPVC_doesNotSpawnMultiplePVCs()
+	 * Tests that calling NextPlayer 9 times (simulating 10 turns) causes the PVC unit to spawn in a sector,
+	 * and calling NextPlayer once more does not cause a second PVC to spawn.
+	 * ADDITION: 12/02/18
+	 */
+	[UnityTest]
+	public IEnumerator SpawnPVC_doesNotSpawnMultiplePVCs (){
+		Setup ();
+
+		for (int i = 1; i < 11; i++) 
+		{
+			game.NextPlayer ();	//Change turns 10 times.
+		}
+
+		int numberOfPVCs = numberOfPVCSectors (); //Count the number of PVC sectors
+
+		Assert.AreEqual (1, numberOfPVCs); //Assert that numberOfPVCs is still equal to 1.
+
+		yield return null;
+	}
+
+	/**
+	 * SpawnPVC_PVCSpawnsInUnownedSector()
+	 * Tests that the sector the PVC spawns in is not owned by any of the players.
+	 * ADDITION: 12/02/18
+	 */
+	[UnityTest]
+	public IEnumerator SpawnPVC_PVCSpawnsInUnownedSector(){
+		Setup ();
+		for (int i = 1; i < 10; i++) 
+		{
+			game.NextPlayer ();	//Change turns 9 times to spawn PVC.
+		}
+
+		//Find PVC sector.
+		Sector pvcSector = null;
+		foreach (Sector sector in map.sectors) 
+		{
+			if (sector.GetPVC ()) 
+			{
+				pvcSector = sector;
+				break;
+			}
+		}
+		Assert.IsNotNull (pvcSector); //Check that PVC has spawned.
+		Assert.IsNull(pvcSector.GetOwner()); //Checks that the PVC sector is unowned.
+
+		yield return null;
+	}
+
+	/**
+	 * PassTurn_CorrectlyPassesTurn():
+	 * Tests that the PassTurn method correctly ends the current player's turn and passes it to the next player.
+	 */
+	[UnityTest]
+	public IEnumerator PassTurn_CorrectlyPassesTurn(){
+		Setup ();
+		//Assumes that the initial player  is at players[0].
+		Player expectedNextPlayer = game.players [1];
+
+		game.PassTurn (); //Call the PassTurn method.
+		game.UpdateAccessible(); //Update the game state.
+
+		Player actualNextPlayer = game.currentPlayer;
+
+		Assert.AreSame (expectedNextPlayer, actualNextPlayer); //Checks that game.currentPlayer is game.players[1].
+		yield return null;
+	}
+
+	/**
+	 * numberOfPVCSectors():
+	 * Returns: the number of sectors which contain a PVC unit.
+	 * ADDITION: 12/02/18
+	 */
+	private int numberOfPVCSectors(){
+		int count = 0;
+		foreach (Sector sector in map.sectors) 
+		{
+			if (sector.GetPVC ()) 
+			{
+				count++;
+			}
+		}
+		return count;
+	}
+	
     private void Setup() {
 		// initialize the game, map, and players with any references needed
 		// the "GameManager" asset contains a copy of the GameManager object

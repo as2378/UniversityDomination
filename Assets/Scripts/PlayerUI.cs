@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //ADDITION: 31/01/18
 
-[System.Serializable]
 public class PlayerUI : MonoBehaviour {
 
 	/*

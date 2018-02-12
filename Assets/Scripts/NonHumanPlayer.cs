@@ -57,7 +57,7 @@ public class NonHumanPlayer : Player {
 	 * 
 	 * ADDITION: 02/02/18	-for the implementation of a non human player.
 	 */
-	public KeyValuePair<Sector,int> findBestMove(Unit unitToMove, Sector[] possibleMoves){
+	private KeyValuePair<Sector,int> findBestMove(Unit unitToMove, Sector[] possibleMoves){
 		Sector bestMove = null;
 		int bestScore = -1;
 

@@ -14,9 +14,9 @@ public class Game : MonoBehaviour {
 	public GameObject[] unitPrefabs;		// ADDITION: added in order to assign generated players units.
 
     //This is used for delaying the PVC's spawn
-    private int numberOfTurns = 1;
+    public int numberOfTurns = 1;
 
-    private bool PVCExists = false;
+    public bool PVCExists = false;
 
     public enum TurnState { Move1, Move2, EndOfTurn, NULL };
     [SerializeField] private TurnState turnState;
@@ -128,18 +128,10 @@ public class Game : MonoBehaviour {
 
         // initialize all sectors, allocate players to landmarks,
         // and spawn units
+        InitializeSectors();
 
-
-		// get an array of all sectors
+        // get an array of all sectors containing landmarks
         Sector[] sectors = gameMap.GetComponentsInChildren<Sector>();
-
-		// initialize each sector
-        foreach (Sector sector in sectors)
-		{
-            sector.Initialize();
-		}
-            
-		// get an array of all sectors containing landmarks
         Sector[] landmarkedSectors = GetLandmarkedSectors(sectors);
             
         // ensure there are at least as many landmarks as players
@@ -185,6 +177,18 @@ public class Game : MonoBehaviour {
             throw new System.Exception("There can be at most 1 PVC on the map at any time.");
         }
 	}
+
+    public void InitializeSectors()
+    {
+        // get an array of all sectors
+        Sector[] sectors = gameMap.GetComponentsInChildren<Sector>();
+
+        // initialize each sector
+        foreach (Sector sector in sectors)
+        {
+            sector.Initialize();
+        }
+    }
 
     private Sector[] GetLandmarkedSectors(Sector[] sectors) {
 

@@ -26,7 +26,7 @@ public class NonHumanPlayer : Player {
 			foreach (Unit unit in this.units) 
 			{
 				KeyValuePair<Sector,int> unitsBestMove = this.findBestMove (unit, unit.GetSector ().GetAdjacentSectors ());
-				if (unitsBestMove.Value > bestMoveScore) 
+				if (unitsBestMove.Value > bestMoveScore || (unitsBestMove.Value == bestMoveScore && Random.Range(1,10) <= 5)) //ADDITION: 13/02/18 added random element to AI
 				{
 					bestMoveScore = unitsBestMove.Value;
 					moveFrom = unit.GetSector ();
@@ -90,7 +90,8 @@ public class NonHumanPlayer : Player {
 					//output += "Landmark";
 				}
 			}
-			if (currentScore > bestScore) // check if the move is better than the best, and if so update bestMove/bestScore
+			//ADDITION: 13/02/18 added random element to AI.
+			if (currentScore > bestScore  ||  (currentScore == bestScore && Random.Range(1,10) <= 5)) // check if the move is better than the best, and if so update bestMove/bestScore
 			{
 				bestScore = currentScore;
 				bestMove = move;

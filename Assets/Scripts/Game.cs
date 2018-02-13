@@ -398,14 +398,11 @@ public class Game : MonoBehaviour {
         turnState = TurnState.NULL;
         Debug.Log("GAME FINISHED");
 
-		foreach (Player player in players) {
-			for (int i = 0; i < player.units.Count; i++) {
-				player.units[i].DestroySelf ();
-			}
+		if (menu != null) 
+		{
+			menu.SetActive (true);
+			menu.GetComponent<Menu> ().ShowGameOverMenu ();
 		}
-
-		menu.SetActive (true);
-		menu.GetComponent<Menu> ().ShowGameOverMenu ();
     }
 
 	public void UpdateGUI() {

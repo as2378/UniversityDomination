@@ -108,11 +108,6 @@ public class Unit : MonoBehaviour {
         // player than the unit, capture it and level up
         if (targetSector.GetOwner() != this.owner)
         {
-            // level up
-            LevelUp();
-
-            // capture the target sector for the owner of this unit
-            owner.Capture(targetSector);
             if (targetSector.GetPVC() == true)
             {
                 GameObject Catcher = GameObject.Find("Catcher");
@@ -122,6 +117,12 @@ public class Unit : MonoBehaviour {
                 targetSector.GetOwner().SetBeer(currentBeer + CatcherMovement.GetlastBeer());
                 targetSector.GetOwner().SetKnowledge(currentBook + CatcherMovement.GetlastBook());
             }
+            // level up
+            LevelUp();
+
+            // capture the target sector for the owner of this unit
+            owner.Capture(targetSector);
+            
         }
 
         if (targetSector.GetPVC() == true)

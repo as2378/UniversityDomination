@@ -108,7 +108,7 @@ public class Unit : MonoBehaviour {
         // player than the unit, capture it and level up
         if (targetSector.GetOwner() != this.owner)
         {
-			if (targetSector.GetPVC() == true)
+			if (targetSector.GetPVC() == true && targetSector.GetOwner() != null)
             {
                 GameObject Catcher = GameObject.Find("Catcher");
                 MovementLR CatcherMovement = Catcher.GetComponent<MovementLR>();

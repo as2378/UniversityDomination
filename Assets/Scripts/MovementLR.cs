@@ -16,7 +16,7 @@ public class MovementLR : MonoBehaviour
     public void Start()
     {
 
-        mainCamera = GameObject.Find("MainCamera");
+        mainCamera = GameObject.Find("Main Camera");
         GUI = GameObject.Find("GUI");
         DropperCamera = GameObject.Find("DropperCamera");
         mainCamera.SetActive(true);

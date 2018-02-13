@@ -3,16 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //ADDITION: 31/01/18
 
-[System.Serializable]
 public class PlayerUI : MonoBehaviour {
-
-	/*
-	// Use this for initialization
-	void Start () {
-		
-	} 
-	*/
-
 	[SerializeField] private Player player;
 	[SerializeField] private Text header;
 	[SerializeField] private Text headerHighlight;

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Game : MonoBehaviour {
 
     public Player[] players;
@@ -128,6 +127,12 @@ public class Game : MonoBehaviour {
 
         // initialize all sectors, allocate players to landmarks,
         // and spawn units
+
+        /*
+         * CHANGE: 13/02/2018
+         * Replaced a block of code with this method as the same thing has to be
+         * done in the Menu class (reusability)
+         * */
         InitializeSectors();
 
         // get an array of all sectors containing landmarks
@@ -178,6 +183,9 @@ public class Game : MonoBehaviour {
         }
 	}
 
+    /* ADDITION: 13/02/2018
+     * Initializes all the sectors in the map.
+     * */
     public void InitializeSectors()
     {
         // get an array of all sectors

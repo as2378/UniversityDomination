@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Player : MonoBehaviour {
 
-	public List <Sector> ownedSectors = new List<Sector>();
-	public List <Unit> units = new List<Unit>();
+    [SerializeField] public List <Sector> ownedSectors = new List<Sector>();
+    [SerializeField] public List <Unit> units = new List<Unit>();
 
     [SerializeField] private Game game;
     [SerializeField] private GameObject unitPrefab;

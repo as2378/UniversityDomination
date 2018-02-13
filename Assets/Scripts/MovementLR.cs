@@ -29,7 +29,7 @@ public class MovementLR : MonoBehaviour
     {
         mainCamera.SetActive(false);
         GUI.SetActive(true);
-        DropperCamera.SetActive(true);
+        DropperCamera.SetActive(false);
         for (int i = 0; i < 20; i++)
         {
             float spawn = Random.Range(0.3f, 1.75f);

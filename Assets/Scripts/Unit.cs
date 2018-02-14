@@ -114,8 +114,8 @@ public class Unit : MonoBehaviour {
                 MovementLR CatcherMovement = Catcher.GetComponent<MovementLR>();
                 int currentBeer = targetSector.GetOwner().GetBeer();
                 int currentBook = targetSector.GetOwner().GetKnowledge();
-                targetSector.GetOwner().SetBeer(currentBeer + CatcherMovement.GetlastBeer());
-                targetSector.GetOwner().SetKnowledge(currentBook + CatcherMovement.GetlastBook());
+                targetSector.GetOwner().SetBeer(currentBeer - CatcherMovement.GetlastBeer());
+                targetSector.GetOwner().SetKnowledge(currentBook - CatcherMovement.GetlastBook());
             }
             // level up
             LevelUp();
@@ -125,15 +125,25 @@ public class Unit : MonoBehaviour {
 
         if (targetSector.GetPVC() == true)
         {
+            Debug.Log("calling dropper");
             GameObject Catcher = GameObject.Find("Catcher");
             MovementLR CatcherMovement = Catcher.GetComponent<MovementLR>();
-            int stall = CatcherMovement.StartDropperGame();
-            int currentBeer = this.owner.GetBeer();
-            int currentBook = this.owner.GetKnowledge();
-            this.owner.SetBeer(currentBeer + CatcherMovement.GetBeer());
-            this.owner.SetKnowledge(currentBook + CatcherMovement.GetBook());
+            int stall = CatcherMovement.StartDropperGame(this);
+            
+            
         }
 
+    }
+
+    public void addScoreFromDropper()
+    {
+        GameObject Catcher = GameObject.Find("Catcher");
+        MovementLR CatcherMovement = Catcher.GetComponent<MovementLR>();
+        int currentBeer = this.owner.GetBeer();
+        int currentBook = this.owner.GetKnowledge();
+        print(currentBeer + " " + CatcherMovement.GetBeer());
+        this.owner.SetBeer(currentBeer + CatcherMovement.GetBeer());
+        this.owner.SetKnowledge(currentBook + CatcherMovement.GetBook());
     }
 
     public void SwapPlacesWith(Unit otherUnit) {

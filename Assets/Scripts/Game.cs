@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Game : MonoBehaviour {
-
     public Player[] players;
 	public GameObject gameMap;
     public Player currentPlayer;
@@ -55,7 +54,13 @@ public class Game : MonoBehaviour {
     }
 
 
-	/*
+	/**
+	 * CreatePlayers(int numberOfPlayers):
+	 * Generates four players and places them inside the game manager. This method also initializes players with
+	 * their starting colours, unitprefabs, name, gui and game.
+	 * It makes sure that there is at least 2 human players and no more than 4. If 2 <= numberOfPlayers < 4 then
+	 * NonHumanPlayers will be generated to increase the player count to four.
+	 * 
 	 * CHANGED: 31/01/18
 	 * Added the functionality to generate new players, without doing it manually in the inspector.
 	 * This allows us to have two classes; Player and NonHumanPlayer, which will help when programming the AI.
@@ -74,6 +79,7 @@ public class Game : MonoBehaviour {
 		for (int i = 0; i < 4; i++) 
 		{
 			//Creates a player GameObject and gives it either a Player script or a NonHumanPlayer script.
+			//ADDITIONS
 			GameObject newPlayerGameObject = new GameObject ();
 			newPlayerGameObject.transform.parent = this.gameObject.transform;
 			newPlayerGameObject.name = "Player" + (i+1);
@@ -102,37 +108,21 @@ public class Game : MonoBehaviour {
 			newUI.Initialize (newPlayer, i + 1);
 		}
 		this.currentPlayer = this.players [0];
-		/*
-        // mark the specified number of players as human
-		for (int i = 0; i < numberOfPlayers; i++)
-		{
-			players[i].SetHuman(true);
-		}
-
-		// give all players a reference to this game
-		// and initialize their GUIs
-		for (int i = 0; i < 4; i++)
-		{
-			players[i].SetGame(this);
-			players[i].GetGui().Initialize(players[i], i + 1);
-		}
-		*/
     }
 
-    /*
+    /**
+     * InitializeMap():
+     * Initializes all sectors, allocate players to landmarks, and spawn units.
+     * 
      * ADDITION: 27/01/18
      * Added the checks to ensure there is at most 1 PVC on the map.
-     * */
+     */
 	public void InitializeMap() {
-
-        // initialize all sectors, allocate players to landmarks,
-        // and spawn units
-
         /*
          * CHANGE: 13/02/2018
          * Replaced a block of code with this method as the same thing has to be
          * done in the Menu class (reusability)
-         * */
+         */
         InitializeSectors();
 
         // get an array of all sectors containing landmarks
@@ -144,14 +134,12 @@ public class Game : MonoBehaviour {
         {
             throw new System.Exception("Must have at least as many landmarks as players; only " + landmarkedSectors.Length.ToString() + " landmarks found for " + players.Length.ToString() + " players.");
         }
-
-
+			
 		// randomly allocate sectors to players
         foreach (Player player in players) 
 		{
 			bool playerAllocated = false;
-            while (!playerAllocated) {
-                
+            while (!playerAllocated) {        
 				// choose a landmarked sector at random
                 int randomIndex = Random.Range (0, landmarkedSectors.Length);
 				
@@ -161,7 +149,6 @@ public class Game : MonoBehaviour {
                     player.Capture(landmarkedSectors[randomIndex]);
 					playerAllocated = true;
 				}
-
                 // retry until player is allocated
 			}
 		}
@@ -183,14 +170,17 @@ public class Game : MonoBehaviour {
         }
 	}
 
-    /* ADDITION: 13/02/2018
+    /**
+     * InitializeSectors():
+     * Runs through each sector in the map and calls its initialize method.
+     * 
+     * ADDITION: 13/02/2018
      * Initializes all the sectors in the map.
-     * */
+     */
     public void InitializeSectors()
     {
         // get an array of all sectors
         Sector[] sectors = gameMap.GetComponentsInChildren<Sector>();
-
         // initialize each sector
         foreach (Sector sector in sectors)
         {
@@ -198,10 +188,11 @@ public class Game : MonoBehaviour {
         }
     }
 
+	/**
+	 * GetLandmarkedSectors(Sector[] sectors):
+	 * Returns: a list of all sectors that contain landmarks from the array sectors.
+	 */
     private Sector[] GetLandmarkedSectors(Sector[] sectors) {
-
-        // return a list of all sectors that contain landmarks from the given array
-
         List<Sector> landmarkedSectors = new List<Sector>();
         foreach (Sector sector in sectors)
         {
@@ -210,15 +201,15 @@ public class Game : MonoBehaviour {
                 landmarkedSectors.Add(sector);
             }
         }
-
         return landmarkedSectors.ToArray();
     }
 
+	/**
+	 * NoUnitSelected():
+	 * Scan through each player and each unit owned by each player.
+	 * Returns: true if no unit is selected, false otherwise
+	 */
     public bool NoUnitSelected() {
-        
-        // return true if no unit is selected, false otherwise
-
-
         // scan through each player
         foreach (Player player in players)
         {
@@ -230,21 +221,19 @@ public class Game : MonoBehaviour {
                     return false;
             }
         }
-
         // otherwise, return true
         return true;
     }
 
-    /*
+    /**
+     * NextPlayer():
+     * Set the current player to the next player in the order, increments numberOfTurns and calls SpawnPVC.
+     * 
      * ADDITION: 27/01/18
      * Added PVC spawning. At the start of each turn the game checks if
      * it's time to randomly spawn the PVC.
      */
     public void NextPlayer() {
-
-        // set the current player to the next player in the order
-
-
         // deactivate the current player
         currentPlayer.SetActive(false);
 		currentPlayer.GetGui().Deactivate();
@@ -256,7 +245,6 @@ public class Game : MonoBehaviour {
             {
                 // set the next player's index
                 int nextPlayerIndex = i + 1;
-
                 // if end of player list is reached, loop back to the first player
                 if (nextPlayerIndex == players.Length)
                 {
@@ -264,7 +252,6 @@ public class Game : MonoBehaviour {
                     players[0].SetActive(true);
 					players[0].GetGui().Activate();
                 }
-
                 // otherwise, set the next player as the current player
                 else
                 {
@@ -275,23 +262,22 @@ public class Game : MonoBehaviour {
                 }
             }
         }
-
         numberOfTurns += 1;
         SpawnPVC();
     }
 
-    /*
+    /**
+     * SpawnPVC():
      * ADDITION: 27/01/18
      * This method is called every time NextPlayer() is invoked.
      * 
      * The method will spawn the PVC randomly on the map if
      * numberOfTurns == delayPVCBy
-     * */
+     */
     private void SpawnPVC() {
         if(PVCExists) {
             return;
         }
-
         if(numberOfTurns == delayPVCBy) {
             Sector[] sectors = gameMap.GetComponentsInChildren<Sector>();
             bool spawned = false;
@@ -308,10 +294,11 @@ public class Game : MonoBehaviour {
         }
     }
 
-    /*
+    /**
+     * CountPVC()
      * ADDITION: 27/01/18
-     * CountPVC() will return the number of PVCs on the map
-     * */
+     * Returns: the number of PVCs on the map.
+     */
     private int CountPVC() {
         Sector[] sectors = gameMap.GetComponentsInChildren<Sector>();
         int counter = 0;
@@ -321,15 +308,14 @@ public class Game : MonoBehaviour {
                 counter++;
             }
         }
-
         return counter;
     }
-       
+    
+	/**
+	 * NextTurnState():
+	 * Changes the turn state to the next in the order, or to initial turn state if turn is completed.
+	 */
     public void NextTurnState() {
-
-        // change the turn state to the next in the order,
-        // or to initial turn state if turn is completed
-
         switch (turnState)
         {
             case TurnState.Move1:
@@ -347,21 +333,23 @@ public class Game : MonoBehaviour {
             default:
                 break;
         }
-
 		UpdateGUI();
     }
 
+	/**
+	 * EndTurn():
+	 * Sets the turn state to EndOfTurn.
+	 */
     public void EndTurn() {
-
         // end the current turn
-
         turnState = TurnState.EndOfTurn;
     }
 
+	/**
+	 * GetWinner():
+	 * Returns: the winning player, or null if no winner yet
+	 */
     public Player GetWinner() {
-
-        // return the winning player, or null if no winner yet
-
         Player winner = null;
 
         // scan through each player
@@ -381,12 +369,15 @@ public class Game : MonoBehaviour {
                     return null;
             }
         }
-
         // if only one player hasn't been eliminated, then return it as the winner
         return winner;
     }
 
-	/*
+	/**
+	 * EndGame():
+	 * Sets gameFinished to true, deactivates the current player, sets the current player to null,
+	 * sets the turn state to NULL and shows the gameover menu.
+	 * 
 	 * CHANGED: 12/02/18
 	 * Added the removal of units from the game.
 	 * Changed the code so that it calls the endgame menu.
@@ -405,6 +396,10 @@ public class Game : MonoBehaviour {
 		}
     }
 
+	/**
+	 * UpdateGUI():
+	 * For each player in the game, call UpdateDisplay for their PlayerUI.
+	 */
 	public void UpdateGUI() {
 
 		// update all players' GUIs
@@ -412,15 +407,15 @@ public class Game : MonoBehaviour {
 			players [i].GetGui ().UpdateDisplay ();
 		}
 	}
-        
+    
+	/**
+	 * Initialize():
+	 * Initializes the game; calls CreatePlayers, InitializeMap, sets the turnstate to Move1, the currentplayer to
+	 * to the first player and updates the GUI.
+	 */
 	public void Initialize () {
-        
-        // initialize the game
-
-
         // create a specified number of human players
-        // *** currently hard-wired to 2 for testing ***
-		CreatePlayers(this.numberOfPlayers);
+		CreatePlayers(this.numberOfPlayers); //ADDITION, numberOfPlayers is linked to the menu slider.
 
         // initialize the map and allocate players to landmarks
         InitializeMap();
@@ -435,10 +430,10 @@ public class Game : MonoBehaviour {
 
 		// update GUIs
 		UpdateGUI();
-
 	}
 
-	/*
+	/**
+	 * nonHumanPlayerTurn():
 	 * ADDITION: 01/02/18
 	 * Checks to see if the current player is a non-human player, and if so, calls its makeMove method.
 	 * This has been added to allow for the AI functionality.
@@ -459,31 +454,35 @@ public class Game : MonoBehaviour {
 	 * CHANGED: 01/02/18
 	 * Removed duplication. Calls UpdateAccessible instead.
 	 */
-	void Update () {			
-		// if test mode is not enabled
-		if (!testMode)
-		{       
-            /*
-             * ADDITION: 11/02/2018
-             * Checks if the ESCAPE key has been pressed
-             */
-            if(Input.GetKeyDown(KeyCode.Escape)) {
-                menu.SetActive(true);
-            }
-
-			this.UpdateAccessible ();
+	void Update () {	
+		// if test mode is not enabled and the dropper game is not playing.
+		if (!testMode) 
+		{      
+			//ADDITION: 14/02/18 added a restriction so that the game does not progress when the minigame is playing.
+			MovementLR dropperGame = GameObject.Find("Catcher").GetComponent<MovementLR>();
+			if (dropperGame.stopped) 
+			{
+				/*
+             	 * ADDITION: 11/02/2018
+             	 * Checks if the ESCAPE key has been pressed
+             	 */
+				if (Input.GetKeyDown (KeyCode.Escape)) {
+					menu.SetActive (true);
+				}
+				this.UpdateAccessible ();
+			}
 		}
 	}
 
-	/*
+	/**
+	 * UpdateAccessible():
+	 * at the end of each turn, check for a winner and end the game if necessary; 
+	 * otherwise, start the next player's turn can be called by other classes (for testing)
+	 * 
 	 * CHANGED: 01/02/18
 	 * Added a call to nonHumanPlayerTurn(), so that when it is the AI's turn, its makeMove method is invoked.
 	 */
 	public void UpdateAccessible () {
-		// at the end of each turn, check for a winner and end the game if
-		// necessary; otherwise, start the next player's turn
-		// can be called by other classes (for testing)
-
 		if (turnState == TurnState.EndOfTurn)
 		{
 			// if there is no winner yet
@@ -507,7 +506,8 @@ public class Game : MonoBehaviour {
 		}
     }
 
-    /*
+    /**
+     * PassTurn():
      * ADDITION: 11/02/2018
      * Passes the turn to the next player.
      * Invoked when the PassTurnButton is clicked.

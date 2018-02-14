@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * ADDITION: 12/02/18
+ * Droppper is a class attached to the falling objects in the dropper game.
+ * It causes the objects to rotate and checks to see if they have been caught or have fallen passed the catcher.
+ * When this occurs, the item will be destroyed.
+ */
 public class Droppper : MonoBehaviour
 {
     public float dropSpeed = 10;
@@ -9,14 +15,12 @@ public class Droppper : MonoBehaviour
     public int BeerScore;
     public int BookScore;
 
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    /**
+     * Update():
+     * Called once per frame and is used to control the rotation of the item.
+     * It also checks to see if the item has been caught by the catcher or if it has been missed.
+     * ADDITION: 12/02/18
+     */
     void Update()
     {
         GameObject catcher = GameObject.Find("Catcher");

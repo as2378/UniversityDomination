@@ -58,13 +58,12 @@ public class Unit : MonoBehaviour {
     }
 
 
-
+	/**
+	 * Initialize(Player player, Sector sector):
+	 * Initialize the unit to be owned by the specified player and in the specified sector.
+	 * It's level is also set to 1.
+	 */
     public void Initialize(Player player, Sector sector) {
-
-        // initialize the unit to be owned by the specified 
-        // player and in the specified sector
-
-
         // set the owner, level, and color of the unit
         owner = player;
         level = 1;
@@ -75,39 +74,30 @@ public class Unit : MonoBehaviour {
 
         // place the unit in the sector
         MoveTo(sector);
-
     }
 
+	/**
+	 * MoveTo(Sector targetSector):
+	 * This method move the unit into the target sector, capturing it and levelling up if necessary.
+	 * It also detects if the targetSector contains a PVC and calls the PVC minigame if the targetSector
+	 * is not owned by the unit's owner and the owner is human.
+	 */
     public void MoveTo(Sector targetSector) {
-
-        // move the unit into the target sector, capturing it
-        // and levelling up if necessary
-
-
-        // clear the unit's current sector
-        if (this.sector != null)
+		if (this.sector != null) // clear the unit's current sector
         {
             this.sector.ClearUnit();
         }   
 
-        // set the unit's sector to the target sector
-        // and the target sector's unit to the unit
-        this.sector = targetSector;
-        targetSector.SetUnit(this);
+		this.sector = targetSector; //set the unit's sector to the target sector.
+		targetSector.SetUnit(this); //set the target sector's unit to the unit
 		Transform targetTransform = targetSector.transform.Find ("Units").transform;
 
-        // set the unit's transform to be a child of
-        // the target sector's transform
-        transform.SetParent(targetTransform);
-
-        // align the transform to the sector
-        transform.position = targetTransform.position;
-
-
-        // if the target sector belonged to a different 
-        // player than the unit, capture it and level up
-        if (targetSector.GetOwner() != this.owner)
+		transform.SetParent(targetTransform); //set the unit's transform to be a child of the target sector's transform  
+		transform.position = targetTransform.position; // align the transform to the sector
+        
+		if (targetSector.GetOwner() != this.owner) // if the target sector belonged to a different player than the unit, capture it and level up
         {
+			//ADDITION: 13/02/18 this will allow the beer/knowledge scores of the previous owner to decrease.
 			if (targetSector.GetPVC() == true && targetSector.GetOwner() != null)
             {
                 GameObject Catcher = GameObject.Find("Catcher");
@@ -117,44 +107,55 @@ public class Unit : MonoBehaviour {
                 targetSector.GetOwner().SetBeer(currentBeer - CatcherMovement.GetlastBeer());
                 targetSector.GetOwner().SetKnowledge(currentBook - CatcherMovement.GetlastBook());
             }
-            // level up
-            LevelUp();
-			// capture the target sector for the owner of this unit
-			owner.Capture(targetSector); 
-        }
+   
+			LevelUp();
+			owner.Capture(targetSector); // capture the target sector for the owner of this unit
 
-        if (targetSector.GetPVC() == true)
-        {
-            Debug.Log("calling dropper");
-            GameObject Catcher = GameObject.Find("Catcher");
-            MovementLR CatcherMovement = Catcher.GetComponent<MovementLR>();
-            int stall = CatcherMovement.StartDropperGame(this);
-            
-            
-        }
+			//ADDITION: 13/02/18  This detects if the target sector contains a PVC, and if so runs the minigame.
+			if (targetSector.GetPVC() == true)
+			{
+				GameObject Catcher = GameObject.Find("Catcher");
+				MovementLR CatcherMovement = Catcher.GetComponent<MovementLR>();
 
+				if (this.owner.GetType () == typeof(NonHumanPlayer)) //ADDITION: 14/02/18 added a check if the AI captures a PVC
+				{ 
+					CatcherMovement.lastpersonBeerScore = 4;	//Give the AI 2 beer & 2 books for catching the PVC.
+					CatcherMovement.lastpersonBookScore = 4;
+					owner.SetBeer (owner.GetBeer () + 2);
+					owner.SetKnowledge (owner.GetKnowledge () + 2);
+				} 
+				else 
+				{
+					CatcherMovement.StartDropperGame(this);  //Start the minigame if player is human.
+				}      
+			}
+        }
     }
 
-    public void addScoreFromDropper()
+	/**
+	 * addScoreFromDropper:
+	 * Increases the owner's beer & knowledge scores by beerScore & bookScore respectively.
+	 * This is called when the dropper PVC minigame ends.
+	 * ADDITION: 14/02/18
+	 */
+	public void addScoreFromDropper(int beerScore, int bookScore)
     {
-        GameObject Catcher = GameObject.Find("Catcher");
-        MovementLR CatcherMovement = Catcher.GetComponent<MovementLR>();
         int currentBeer = this.owner.GetBeer();
         int currentBook = this.owner.GetKnowledge();
-        print(currentBeer + " " + CatcherMovement.GetBeer());
-        this.owner.SetBeer(currentBeer + CatcherMovement.GetBeer());
-        this.owner.SetKnowledge(currentBook + CatcherMovement.GetBook());
+		this.owner.SetBeer(currentBeer + beerScore);
+		this.owner.SetKnowledge(currentBook + bookScore);
+
+		owner.GetGui ().UpdateDisplay ();
     }
 
+	/**
+	 * SwapPlacesWith(Unit otherUnit):
+	 * Switch the sectors of this unit and otherUnit unit.
+	 */
     public void SwapPlacesWith(Unit otherUnit) {
-
-        // switch the sectors of this unit and another unit
-
-
         // swap the sectors' references to the units
         this.sector.SetUnit(otherUnit);
         otherUnit.sector.SetUnit(this);
-
 
         // get the index of this unit's sector in the map's list of sectors
         int tempSectorIndex = -1;
@@ -163,30 +164,27 @@ public class Unit : MonoBehaviour {
             if (this.sector == this.owner.GetGame().gameMap.GetComponent<Map>().sectors[i])
                 tempSectorIndex = i;
         }
-
         // swap the units' references to their sectors
         this.sector = otherUnit.sector;
         otherUnit.sector = this.owner.GetGame().gameMap.GetComponent<Map>().sectors[tempSectorIndex] ;
-
 
         // realign transforms for each unit
 		this.transform.SetParent(this.sector.transform.Find("Units").transform);
 		this.transform.position = this.sector.transform.Find("Units").position;
 
 		otherUnit.transform.SetParent(otherUnit.sector.transform.Find("Units").transform);
-		otherUnit.transform.position = otherUnit.sector.transform.Find("Units").position;
-        
+		otherUnit.transform.position = otherUnit.sector.transform.Find("Units").position; 
     }
 
+	/**
+	 * LevelUp()
+	 * Increases the level of the unit by 1, capping it at level 5.
+	 * Updates the unit's material to match.
+	 */
 	public void LevelUp() {
-
-        // level up the unit, capping at Level 5
-
 		if (level < 5) {
-
 			// increase level
 			level++;
-
 			// change texture to reflect new level
 			switch (level) 
 			{
@@ -206,38 +204,36 @@ public class Unit : MonoBehaviour {
 				this.gameObject.GetComponent<MeshRenderer> ().material = level1Material;
 				break;
 			}
-
 			// set material color to match owner color
 			GetComponent<Renderer>().material.color = color;
-
 		}
-		
 	}
 
+	/**
+	 * Select():
+	 * Selects the unit and highlights the sectors adjacent to it.
+	 */
     public void Select() {
-
-        // select the unit and highlight the sectors adjacent to it
-
         selected = true;
         sector.ApplyHighlightAdjacent();
     }
 
+	/**
+	 * Deselect():
+	 * Deselects the unit and unhighlights the sectors adjacent to it.
+	 */
     public void Deselect() {
-
-        // deselect the unit and unhighlight the sectors adjacent to it
-
         selected = false;
         sector.RevertHighlightAdjacent();
     }
 
+	/**
+	 * DestroySelf():
+	 * safely destroy the unit by removing it from its owner's list of units before destroying
+	 */
     public void DestroySelf() {
-
-        // safely destroy the unit by removing it from its owner's
-        // list of units before destroying
-
         sector.ClearUnit();
         owner.units.Remove(this);
         Destroy(this.gameObject);
-    }
-        
+    }     
 }
